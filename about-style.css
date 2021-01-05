@@ -1,0 +1,28 @@
+*{
+  font-family: "Poppins", sans-serif;
+  background-color: black;
+}
+.about-me-page{
+  font-size: 50px;
+  text-align: center;
+  color: #A2CC3C;
+}
+.about-text-page p {
+  color: white;
+  margin-top: 2%;
+  margin-left: 5%;
+  width: 90%;
+  text-align: center;
+  font-size: 20px;
+}
+.about-text h2 {
+  text-align: center;
+}
+.make-text-small-2{
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+.text-line{
+  text-align: center;
+}

@@ -157,15 +157,11 @@ nav{
   justify-content: space-around;
   align-items: center;
 }
-.logo{
-  /* font-size: 20px; */
-  /* width: 50%; */
-  /* color:#ffeaa7; */
-  background-color: #ffbfbf;
-  margin-left: 20px;
-  padding-right: 1px;
-  border-radius: 100%;
-  /* text-transform: uppercase; */
+.logo img{
+  margin-top: 10px;
+  padding-left: 40px;
+  width: 40px;
+  height: 40px;
 }
 .manu{
   width: 60%;

@@ -195,5 +195,6 @@ nav{
   justify-content: center;
 }
 .footer-area a{
+  padding-top: 50px;
   margin: 20px;
 }

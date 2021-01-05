@@ -32,6 +32,10 @@ p {
   margin-left: 5%;
   padding-left: 2%;
 }
+.first-section img{
+  width: 500px;
+  height: 490px;
+}
 
 section {
   height: 500px;
@@ -110,7 +114,6 @@ footer p {
   background-color: #fff3cc;
 }
 .image-container {
-  border-radius: 10px;
   padding-top: 2%;
   margin-left: 2%;
   display: flex;

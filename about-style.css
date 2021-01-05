@@ -26,3 +26,7 @@
 .text-line{
   text-align: center;
 }
+.image-container img{
+  width: 500px;
+  height: 500px;
+}

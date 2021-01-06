@@ -201,3 +201,57 @@ nav{
   padding-top: 50px;
   margin: 20px;
 }
+
+/* Projects section */
+.projects{
+  box-sizing: border-box;
+  background-color: #F8F9FC;
+}
+.projects{
+  width: auto;
+  height: 80%;
+}
+.wrapper{
+  margin: 10%;
+}
+.wrapper h1{
+  font-size: 52px;
+  margin-bottom: 60px;
+  text-align: center;
+}
+.work-section{
+  text-align: center;
+  display: flex;
+  width: auto;
+  justify-content: center;
+}
+.all-works{
+  box-shadow: 0px 6.5812px 19.7436px rgba(0, 0, 0, 0.07);;
+  border-radius: 20px;
+  background-color: white;
+  margin: 12px;
+  margin-bottom: 20px;
+  width: 370px;
+  height: 374px;
+  line-height: 15px;
+  position: relative;
+}
+.wrapper .all-works h3{
+  padding-left: 10px;
+  text-align: left;
+  font-size: 24px;
+  padding-top: 10px;
+}
+p{
+  padding: 10px;
+  text-align: left;
+}
+.work_img img{
+  margin-top: 12px;
+  width: 343.54px;
+  height: 213.23px;
+}
+
+.red-color{
+  color: red;
+}

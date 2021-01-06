@@ -10,7 +10,7 @@ h1 {
 }
 
 h2 {
-  font-size: 40px;
+  font-size: 35px;
   line-height: 60%;
 }
 
@@ -156,7 +156,7 @@ footer p {
 /*nav bar style*/
 nav {
   height: 50px;
-  background-color: #55efc4;
+  background-color: #7bed9f;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -171,7 +171,7 @@ nav {
   width: 60%;
   display: flex;
   justify-content: space-around;
-  padding-left: 900px;
+  padding-left: 850px;
   align-items: center;
 }
 .manu a {
@@ -179,17 +179,18 @@ nav {
   text-decoration: none;
   /* color: #2d3436; */
   color: white;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   position: relative;
   border-radius: 2px;
   padding-left: 5px;
   padding-right: 5px;
-  background-image: linear-gradient(45deg, lightSalmon, tomato);
+  background: #ff4757;
 }
 .manu a:hover {
-  background-image: linear-gradient(45deg, #74b9ff, #ff7675);
-  color: #fff;
+  background-image: linear-gradient(45deg, lightSalmon, tomato);
+  /* background-image: linear-gradient(45deg, #74b9ff, #ff7675); */
+  color: #ffffff;
 }
 .footer-area {
   background-color: #dfe6e9;
@@ -205,13 +206,13 @@ nav {
 
 /* Projects section */
 .projects {
-  padding-top: 20px;
+  padding-top: 10px;
   box-sizing: border-box;
   background-color: #f8f9fc;
 }
 .projects {
   width: auto;
-  height: 50%;
+  height: auto;
 }
 .wrapper {
   margin: 10%;

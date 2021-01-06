@@ -204,19 +204,20 @@ nav{
 
 /* Projects section */
 .projects{
+  padding-top: 20px;
   box-sizing: border-box;
   background-color: #F8F9FC;
 }
 .projects{
   width: auto;
-  height: 80%;
+  height: 50%;
 }
 .wrapper{
   margin: 10%;
 }
 .wrapper h1{
   font-size: 52px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   text-align: center;
 }
 .work-section{

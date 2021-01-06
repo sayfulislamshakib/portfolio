@@ -148,10 +148,11 @@ footer p {
   font-size: 15px;
 }
 .about-me-text {
+  color: #a2cc3c;
   font-size: 50px;
   text-align: center;
-  margin-top: 0px;
-  color: #a2cc3c;
+  margin: 20px;
+  /* margin-bottom: 20px; */
 }
 /*nav bar style*/
 nav {
@@ -162,7 +163,7 @@ nav {
   align-items: center;
 }
 .logo img {
-  margin-top: 10px;
+  margin-top: 7px;
   padding-left: 40px;
   width: 40px;
   height: 40px;
@@ -192,8 +193,9 @@ nav {
   /* background-image: linear-gradient(45deg, #74b9ff, #ff7675); */
   color: #ffffff;
 }
+/* footer area start */
 .footer-area {
-  background-color: #dfe6e9;
+  background-color: #f3f3f3;
   width: 100%;
   height: 80%;
   display: flex;
@@ -203,6 +205,7 @@ nav {
   padding-top: 50px;
   margin: 20px;
 }
+/* footer area end */
 
 /* Projects section */
 .projects {

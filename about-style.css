@@ -1,11 +1,11 @@
-*{
+* {
   font-family: "Poppins", sans-serif;
   background-color: black;
 }
-.about-me-page{
+.about-me-page {
   font-size: 50px;
   text-align: center;
-  color: #A2CC3C;
+  color: #a2cc3c;
 }
 .about-text-page p {
   color: white;
@@ -18,15 +18,15 @@
 .about-text h2 {
   text-align: center;
 }
-.make-text-small-2{
+.make-text-small-2 {
   text-align: center;
   color: white;
   font-size: 20px;
 }
-.text-line{
+.text-line {
   text-align: center;
 }
-.image-container img{
+.image-container img {
   width: 500px;
   height: 500px;
 }

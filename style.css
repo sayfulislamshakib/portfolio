@@ -32,7 +32,7 @@ p {
   margin-left: 5%;
   padding-left: 2%;
 }
-.first-section img{
+.first-section img {
   width: 500px;
   height: 490px;
 }
@@ -57,7 +57,7 @@ section {
 
 .singel-section {
   /* box-shadow: 5px 5px 20px gray; */
-  box-shadow:0px 6.5812px 19.7436px rgba(0, 0, 0, 0.07);
+  box-shadow: 0px 6.5812px 19.7436px rgba(0, 0, 0, 0.07);
   border-radius: 10px;
   height: 50%;
   width: 40%;
@@ -76,7 +76,7 @@ section {
   border-image: linear-gradient(180deg, tomato, lightSalmon);
   border-image-slice: 1;
 }
-footer{
+footer {
   margin: 0 auto;
   left: 0;
   bottom: 0;
@@ -147,34 +147,34 @@ footer p {
 .name {
   font-size: 15px;
 }
-.about-me-text{
+.about-me-text {
   font-size: 50px;
   text-align: center;
   margin-top: 0px;
-  color: #A2CC3C;
+  color: #a2cc3c;
 }
 /*nav bar style*/
-nav{
-  height:50px;
+nav {
+  height: 50px;
   background-color: #55efc4;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.logo img{
+.logo img {
   margin-top: 10px;
   padding-left: 40px;
   width: 40px;
   height: 40px;
 }
-.manu{
+.manu {
   width: 60%;
   display: flex;
   justify-content: space-around;
   padding-left: 900px;
   align-items: center;
 }
-.manu a{
+.manu a {
   text-transform: uppercase;
   text-decoration: none;
   /* color: #2d3436; */
@@ -187,47 +187,47 @@ nav{
   padding-right: 5px;
   background-image: linear-gradient(45deg, lightSalmon, tomato);
 }
-.manu a:hover{
+.manu a:hover {
   background-image: linear-gradient(45deg, #74b9ff, #ff7675);
   color: #fff;
 }
-.footer-area{
+.footer-area {
   background-color: #dfe6e9;
   width: 100%;
   height: 80%;
   display: flex;
   justify-content: center;
 }
-.footer-area a{
+.footer-area a {
   padding-top: 50px;
   margin: 20px;
 }
 
 /* Projects section */
-.projects{
+.projects {
   padding-top: 20px;
   box-sizing: border-box;
-  background-color: #F8F9FC;
+  background-color: #f8f9fc;
 }
-.projects{
+.projects {
   width: auto;
   height: 50%;
 }
-.wrapper{
+.wrapper {
   margin: 10%;
 }
-.wrapper h1{
+.wrapper h1 {
   font-size: 52px;
   margin-bottom: 40px;
   text-align: center;
 }
-.work-section{
+.work-section {
   text-align: center;
   display: flex;
   width: auto;
   justify-content: center;
 }
-.all-works{
+.all-works {
   box-shadow: 0px 6.5812px 19.7436px rgba(0, 0, 0, 0.07);
   border-radius: 20px;
   background-color: white;
@@ -238,22 +238,22 @@ nav{
   line-height: 15px;
   position: relative;
 }
-.wrapper .all-works h3{
+.wrapper .all-works h3 {
   padding-left: 10px;
   text-align: left;
   font-size: 24px;
   padding-top: 10px;
 }
-p{
+p {
   padding: 10px;
   text-align: left;
 }
-.work_img img{
+.work_img img {
   margin-top: 12px;
   width: 343.54px;
   height: 213.23px;
 }
 
-.red-color{
+.red-color {
   color: red;
 }

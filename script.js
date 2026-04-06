@@ -897,14 +897,54 @@
       start(event);
     });
 
+    let longPressTimeout = null;
+
+    trigger.addEventListener('pointerdown', (event) => {
+      if (event.pointerType === 'touch') {
+        if (longPressTimeout) {
+          clearTimeout(longPressTimeout);
+        }
+        longPressTimeout = window.setTimeout(() => {
+          start(event);
+        }, 220); // 220ms for a responsive 'long press' feel
+      }
+    });
+
     trigger.addEventListener('pointermove', (event) => {
-      if (!isActive || event.pointerType === 'touch') {
+      if (!isActive) {
         return;
       }
       setPointerFromEvent(event);
     });
 
-    trigger.addEventListener('pointerleave', stop);
+    trigger.addEventListener('pointerleave', () => {
+      if (longPressTimeout) {
+        clearTimeout(longPressTimeout);
+        longPressTimeout = null;
+      }
+      stop();
+    });
+
+    trigger.addEventListener('pointerup', (event) => {
+      if (longPressTimeout) {
+        clearTimeout(longPressTimeout);
+        longPressTimeout = null;
+      }
+      if (event.pointerType === 'touch') {
+        stop();
+      }
+    });
+
+    trigger.addEventListener('pointercancel', (event) => {
+      if (longPressTimeout) {
+        clearTimeout(longPressTimeout);
+        longPressTimeout = null;
+      }
+      if (event.pointerType === 'touch') {
+        stop();
+      }
+    });
+
     trigger.addEventListener('focusin', () => {
       start();
     });

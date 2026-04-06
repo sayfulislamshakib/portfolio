@@ -1486,12 +1486,7 @@ body {
   padding-right: 0;
 }
 
-@media (max-width: 640px) {
-  .AboutMePage-module__header {
-    padding-left: var(--space-2);
-    padding-right: var(--space-2);
-  }
-}
+
 
 .Site-module__name {
   font-size: var(--font-size-body);

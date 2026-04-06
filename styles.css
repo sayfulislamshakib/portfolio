@@ -95,6 +95,7 @@
     box-sizing: border-box;
     width: 100%;
     display: flex;
+    min-height: 36px;
   }
 }
 
@@ -891,7 +892,7 @@ body {
 
 /* Footer surface and status line block. */
 .SiteFooter-module__footer {
-  padding: var(--space-6) var(--space-4) var(--space-8);
+  padding: var(--space-4);
   padding-left: max(var(--space-4), env(safe-area-inset-left));
   padding-right: max(var(--space-4), env(safe-area-inset-right));
 }
@@ -902,7 +903,7 @@ body {
 }
 
 .SiteFooter-module__card {
-  padding-top: var(--space-3);
+  padding-top: 16px;
   border-top: 1px solid var(--border);
   flex-direction: column;
   display: flex;

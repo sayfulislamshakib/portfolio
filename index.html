@@ -1,196 +1,403 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<!-------Css Link------->
-		<link rel="stylesheet" href="style.css" />
-		<!-- ------Google font Poppins------ -->
-		<link
-			href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
-			rel="stylesheet"
-		/>
-		<!-------Favicon------->
-		<link rel="shortcut icon" href="images/favicon.png" />
-		<!--------Website tile------->
-		<title>Sayful Islam Shakib Portfolio</title>
-	</head>
+<html lang="en" style="color-scheme: light">
 
-	<!--------Body Start-------->
-	<body>
-		<!-- nav bar start-->
-		<nav>
-			<div class="logo">
-				<img src="images/logo-new.png" alt="Protfolio logo" />
-				<!-- <h1>Sayful></h1> -->
-			</div>
-			<div class="manu">
-				<a href="https://sayfulislamshakib.github.io/portfolio/">HOME</a>
-				<a
-					href="https://drive.google.com/uc?export=download&id=1U4O1WJxJ3r7xqKOUFhLFFbJUvwvY3RvH"
-					target="_blank"
-					>DOWNLOAD MY RESUME</a
-				>
-				<a href="about-me.html">ABOUT ME</a>
-				<a href="contact.html">CONTACT</a>
-				<a href="#">PROJECTS</a>
-			</div>
-		</nav>
-		<!-- nav bar end -->
-		<!--------Section-1 start-------->
-		<section class="top-banner">
-			<div class="first-section">
-				<h1>WELCOME TO</h1>
-				<h1><span class="orange-color">SAYFUL ISLAM SHAKIB's</span></h1>
-				<h1>Portfolio!</h1>
-				<h3>BEGINER WEB DEVLOPER!</h3>
-				<p>
-					Hi, I'm Sayful Islam Shakib. I love python and making Websites. If you
-					love my work please feel free to contact me.
-				</p>
-				<a
-					class="link-button"
-					target="_blank"
-					href="https://www.linkedin.com/in/sayful-islam-shakib-8641071a1/"
-					>WHY HIRE ME!</a
-				>
-			</div>
-			<div class="first-section">
-				<img src="images/1.png" alt="hader image-1" />
-			</div>
-		</section>
-		<!--------Section-1 end-------->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sayful Islam Shakib — Designer</title>
+  <meta name="description" content="Designer based in Dhaka, Bangladesh. UX designer at JustGo." />
+  <link rel="canonical" href="https://sayfulislamshakib.github.io/portfolio-2026/" />
+  <meta property="og:title" content="Sayful Islam Shakib — Designer" />
+  <meta property="og:description" content="Designer based in Dhaka, Bangladesh. UX designer at JustGo." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sayfulislamshakib.github.io/portfolio-2026/" />
+  <meta property="og:image" content="sayful-avatar.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Sayful Islam Shakib — Designer" />
+  <meta name="twitter:description" content="Designer based in Dhaka, Bangladesh. UX designer at JustGo." />
+  <meta name="twitter:image" content="sayful-avatar.png" />
+  <meta name="twitter:site" content="@Sayful_shakib" />
+  <meta name="twitter:creator" content="@Sayful_shakib" />
+  <meta name="theme-color" content="#fafafa" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <script>
+    (function () {
+      try {
+        var savedPreference = localStorage.getItem("theme-preference");
+        if (savedPreference !== "system" && savedPreference !== "light" && savedPreference !== "dark") {
+          var legacyTheme = localStorage.getItem("theme");
+          savedPreference = (legacyTheme === "dark" || legacyTheme === "light") ? legacyTheme : "system";
+        }
+        var resolvedTheme = (savedPreference === "dark" || savedPreference === "light")
+          ? savedPreference
+          : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", resolvedTheme);
+        document.documentElement.style.colorScheme = resolvedTheme;
+      } catch (error) {
+      }
+    })();
+  </script>
+  <link rel="preconnect" href="https://rsms.me" crossorigin="anonymous" />
+  <link href="https://rsms.me/inter/inter.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
 
-		<!--------Section-2 start--------->
-		<section class="second-section">
-			<div class="first-section">
-				<img src="images/2.png" alt="hader image-2" />
-			</div>
-			<div class="dream-area">
-				<h2>MY DREAM!</h2>
-				<h3>BECOME A WORLD CLASS SOFTWARE DEVOLOPER!</h3>
-				<p>
-					I'm a first learner and I try my best to make things possible as I
-					think.
-				</p>
-				<a
-					class="link-button"
-					target="_blank"
-					href="https://drive.google.com/uc?export=download&id=1U4O1WJxJ3r7xqKOUFhLFFbJUvwvY3RvH"
-					>DOWNLOAD MY RESUME</a
-				>
-			</div>
-		</section>
-		<section class="experience-area">
-			<h2 class="experience-text">EXPERIENCE</h2>
-			<div id="full-stack-1" class="first-section singel-section">
-				<h2>I'M A BEGINER AND JUST LEARNING</h2>
-				<h3>
-					<span class="orange-color">2021 | BEGINER LEVEL WEB DEVOLOPER</span>
-				</h3>
-				<p>Hi, I'm a pro-level HTML, CSS, and JavaScript learner.</p>
-			</div>
-			<div id="full-stack-2" class="first-section singel-section">
-				<h2>BEGINER WEB DEVOLOPER</h2>
-				<h3>
-					<span class="orange-color">
-						2021-2022 | PRORAMMING-HERO LEARNER.
-					</span>
-				</h3>
-				<p>
-					In 2020 I'm struggling a lot in my entire life. But I never give up! I
-					try hard and hard to change my life. This is how I'm here now.
-				</p>
-			</div>
-		</section>
-		<!-- Projects are start -->
-		<section class="projects">
-			<div class="wrapper">
-				<h1><span class="red-color">FEATURE</span> PROJECTS</h1>
-				<div class="work-section">
-					<div class="all-works">
-						<div class="work_img">
-							<img src="images/image-4.png" alt="" />
-						</div>
-						<h3>Power-x-gym (gym website)</h3>
-						<p>
-							Lorem Ipsum is simply dummy text of the printing and typesetting
-							industry.
-						</p>
-					</div>
-					<div class="all-works">
-						<div class="work_img">
-							<img src="images/image-5.png" alt="" />
-						</div>
-						<h3>Creative Agency</h3>
-						<p>
-							Lorem Ipsum is simply dummy text of the printing and typesetting
-							industry.
-						</p>
-					</div>
-					<div class="all-works">
-						<div class="work_img">
-							<img src="images/image-8.png" alt="" />
-						</div>
-						<h3>Hard Rock Music</h3>
-						<p>
-							Lorem Ipsum is simply dummy text of the printing and typesetting
-							industry.
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- Projects are end -->
-		<h2 class="about-me-text">ABOUT ME</h2>
-		<section class="me">
-			<div class="image-container">
-				<img
-					class="image-style"
-					src="images/sayful-islam-shakib.png"
-					alt="Sayful Islam Shakib"
-				/>
-			</div>
-			<div class="about-text">
-				<h2 class="text-line">
-					<span class="make-text-small">Hi👋, my name is</span>
-					<span class="orange-color">Sayful Islam Shakib</span>
-				</h2>
-				<p>
-					I'm a first learner, currently, I'm learning
-					<b>Complete web development in programming-hero.com</b> I'm a computer
-					science student and a
-					<span class="make-text-bold">
-						professional graphics designer who learns from LEDP</span
-					>
-					<span class="name">(Learning and earning development project).</span>
-					At first, I try to learn the basic concept of the topic. If I can not
-					understand the topic then I make myself cool down and try my best to
-					learn the topic. I extremely love Python which is why I know the
-					Intermediate label of Python.
-				</p>
-			</div>
-		</section>
-		<!-- foter area start -->
-		<section class="footer-area">
-			<a href="https://facebook.com/sis.shakib.DT" target="_blank"
-				><img src="images/facebook.png" alt="facebook logo"
-			/></a>
-			<a href="https://twitter.com/@sayful_shakib" target="_blank"
-				><img src="images/twitter.png" alt="twitter logo"
-			/></a>
-			<a
-				href="https://www.linkedin.com/in/sayful-islam-shakib-8641071a1/"
-				target="_blank"
-				><img src="images/linkedin.png" alt=""
-			/></a>
-			<a href="https://www.github.com/sayfulislamshakib" target="_blank"
-				><img src="images/github.png" alt="github logo"
-			/></a>
-		</section>
-		<!-- foter area end -->
-		<footer>
-			<p>2021 © Sayful Islam Shakib Portfolio | All rights reserved.</p>
-		</footer>
-	</body>
+<body>
+  <div data-vaul-drawer-wrapper="" style="background-color: var(--bg); min-height: 100vh;">
+    <main class="Site-module__container shared-module__baseTypography">
+      <div data-reveal>
+        <header class="Site-module__header">
+          <div>
+            <h1 class="Site-module__name">Sayful Islam Shakib</h1>
+            <div class="Site-module__tagline" id="header-clock">&nbsp;</div>
+          </div>
+
+          <div class="Site-module__headerActions">
+            <button type="button" id="theme-toggle" class="ThemeToggle-module__track" aria-label="Toggle color theme"
+              aria-pressed="false">
+              <span class="ThemeToggle-module__indicator theme-toggle-indicator"></span>
+              <span class="ThemeToggle-module__slot theme-toggle-slot" data-theme-slot="light" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#theme-toggle-sun-clip)">
+                    <path
+                      d="M10.65 8a2.65 2.65 0 1 0-5.3 0 2.65 2.65 0 0 0 5.3 0Zm1.5 0a4.15 4.15 0 1 1-8.3 0 4.15 4.15 0 0 1 8.3 0Zm-4.9-6.495a.75.75 0 0 1 1.5 0v1.5h-1.5v-1.5Zm0 12.995a.75.75 0 0 0 1.5 0V13h-1.5v1.5Zm7.253-7.253a.75.75 0 0 1 0 1.5h-1.5v-1.5h1.5Zm-12.996 0a.75.75 0 1 0 0 1.5h1.5v-1.5h-1.5Zm11.626 4.816a.75.75 0 1 1-1.06 1.06l-1.061-1.06 1.06-1.06 1.061 1.06ZM3.944 2.874a.75.75 0 0 0-1.06 1.06l1.06 1.061 1.061-1.06-1.06-1.06Zm-1.06 9.189a.75.75 0 1 0 1.06 1.06l1.061-1.06-1.06-1.06-1.061 1.06Zm9.189-9.189a.75.75 0 0 1 1.06 1.06l-1.06 1.061-1.061-1.06 1.06-1.06Z" />
+                  </g>
+                  <defs>
+                    <clipPath id="theme-toggle-sun-clip">
+                      <path d="M0 0h16v16H0z" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </span>
+              <span class="ThemeToggle-module__slot theme-toggle-slot" data-theme-slot="dark" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M6.93 2.622a.75.75 0 0 1 .862.96c-.32 1.025-.537 2.662.714 3.913 1.25 1.25 2.886 1.033 3.912.712a.75.75 0 0 1 .959.862A5.484 5.484 0 0 1 8 13.484 5.484 5.484 0 0 1 6.93 2.622Zm-.855 1.893a3.981 3.981 0 1 0 5.408 5.408c-1.212.12-2.748-.079-4.038-1.368-1.29-1.29-1.49-2.827-1.37-4.04Z" />
+                </svg>
+              </span>
+            </button>
+          </div>
+        </header>
+      </div>
+
+      <div data-reveal>
+        <section class="Site-module__bio">
+          <p>
+            UX designer at
+            <span id="justgo-trigger-wrap" class="JustGoSportsLink-module__trigger">
+              <a id="justgo-trigger" href="https://justgo.com" target="_blank" rel="noopener noreferrer"
+                class="JustGoSportsLink-module__link"><span style="pointer-events: none;">JustGo</span></a>
+            </span>,
+            I translate complex technical details into efficient, high-value tools. I believe details matter — the last
+            10% makes the difference.
+          </p>
+          <p>Previously at <span id="enoch-trigger-wrap" class="JustGoSportsLink-module__trigger"><a id="enoch-trigger" href="https://enoch.app/" target="_blank" rel="noopener noreferrer" class="JustGoSportsLink-module__link"><span style="pointer-events: none;">Element Zero Labs (ENOCH)</span></a></span>, and <span id="songbad-trigger-wrap" class="JustGoSportsLink-module__trigger"><a id="songbad-trigger" href="http://songbadbd.com/" target="_blank" rel="noopener noreferrer" class="JustGoSportsLink-module__link"><span style="pointer-events: none;">Songbadbd</span></a></span>, outside work, I like to explore <a href="https://github.com/sayfulislamshakib" target="_blank" rel="noopener noreferrer"><span style="pointer-events: none;">programming</span></a>, more <a id="about-me-trigger" href="#about-me-sheet" aria-controls="about-me-sheet" aria-expanded="false"><span style="pointer-events: none;">about me</span></a>.</p>
+
+          <div class="Site-module__bioLine">
+            Reach me at
+            <span id="twitter-trigger-wrap" class="TwitterHoverCard-module__trigger">
+              <a id="twitter-trigger" href="https://x.com/Sayful_shakib" target="_blank" rel="noopener noreferrer"><span
+                  style="pointer-events: none;">@Sayful_shakib</span></a>
+            </span>
+            &middot;
+            <span class="InlineTooltip-module__tooltipWrapper">
+              <a id="email-copy-link" href="mailto:connect.sayful@gmail.com"><span
+                  style="pointer-events: none;">connect.sayful@gmail.com</span></a>
+              <span id="email-tooltip"
+                class="InlineTooltip-module__tooltip shadows-module__surfaceShadow inline-tooltip-local"
+                data-open="false">Click to copy</span>
+            </span>
+          </div>
+
+          <aside id="twitter-card" class="TwitterHoverCard-module__card shadows-module__surfaceShadow"
+            aria-hidden="true" inert>
+            <img src="sayful-avatar.png" alt="Sayful Islam Shakib" class="TwitterHoverCard-module__avatar"
+              loading="lazy" />
+            <div class="TwitterHoverCard-module__nameRow">
+              <a href="https://x.com/Sayful_shakib" target="_blank" rel="noopener noreferrer"
+                class="TwitterHoverCard-module__nameLink" tabindex="-1">Sayful</a>
+              <span class="TwitterHoverCard-module__verified" aria-label="Verified account">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true">
+                  <path
+                    d="M22 12L19.8 14.4L20.1 17.7L16.9 18.5L15.2 21.3L12 20L8.8 21.3L7.1 18.5L3.9 17.7L4.2 14.4L2 12L4.2 9.6L3.9 6.3L7.1 5.5L8.8 2.7L12 4L15.2 2.7L16.9 5.5L20.1 6.3L19.8 9.6L22 12Z"
+                    fill="#1D9BF0"></path>
+                  <path d="M10.9 14.8L8.2 12.1L9.4 10.9L10.9 12.4L14.6 8.7L15.8 9.9L10.9 14.8Z" fill="white"></path>
+                </svg>
+              </span>
+              <span class="TwitterHoverCard-module__handle">@Sayful_shakib</span>
+            </div>
+            <p class="TwitterHoverCard-module__bio">
+              UX Designer 🏝️
+            </p>
+            <div class="TwitterHoverCard-module__stats">
+              <span class="TwitterHoverCard-module__stat"><span class="TwitterHoverCard-module__statValue">448</span>
+                Following</span>
+              <span class="TwitterHoverCard-module__stat"><span class="TwitterHoverCard-module__statValue">24</span>
+                Followers</span>
+            </div>
+          </aside>
+        </section>
+      </div>
+
+      <div data-reveal>
+        <section class="Site-module__projects">
+          <div class="Site-module__projectRows">
+            <div class="Site-module__projectRowHighlight" aria-hidden="true"></div>
+            <div class="Site-module__projectRow Site-module__projectRowHeader">
+              <span class="Site-module__colYear">Year</span>
+              <span class="Site-module__colSep" aria-hidden="true"></span>
+              <span class="Site-module__colName">Project</span>
+              <span class="Site-module__colType">Type</span>
+            </div>
+
+            <a href="https://www.notion.so/sayfulislamshakib/Result-Management-2b93e2bb6bea8034a91bfea7cbb377e8?source=copy_link"
+              target="_blank" rel="noopener noreferrer" class="Site-module__projectRow">
+              <span class="Site-module__colYear">2025</span>
+              <span class="Site-module__colSep" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.4995 5.66968L7.49951 14.3299" stroke="var(--muted)" stroke-width="1.3"
+                    stroke-linecap="round"></path>
+                </svg>
+              </span>
+              <span class="Site-module__colName">Result Management</span>
+              <span class="Site-module__colType">Web App</span>
+            </a>
+
+            <a href="https://www.notion.so/sayfulislamshakib/Case-Study-Figma-to-React-Automation-Bridge-2ef3e2bb6bea8038914ded22325fc771?source=copy_link"
+              target="_blank" rel="noopener noreferrer" class="Site-module__projectRow">
+              <span class="Site-module__colYear">2025</span>
+              <span class="Site-module__colSep" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.4995 5.66968L7.49951 14.3299" stroke="var(--muted)" stroke-width="1.3"
+                    stroke-linecap="round"></path>
+                </svg>
+              </span>
+              <span class="Site-module__colName">Figma to React Automation Bridge</span>
+              <span class="Site-module__colType">Figma Plugin</span>
+            </a>
+
+            <a href="https://www.notion.so/sayfulislamshakib/Case-Study-Variant-Layer-Selector-Plugin-2f53e2bb6bea80248b78dea6f0914767?source=copy_link"
+              target="_blank" rel="noopener noreferrer" class="Site-module__projectRow">
+              <span class="Site-module__colYear">2025</span>
+              <span class="Site-module__colSep" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.4995 5.66968L7.49951 14.3299" stroke="var(--muted)" stroke-width="1.3"
+                    stroke-linecap="round"></path>
+                </svg>
+              </span>
+              <span class="Site-module__colName">Variant Layer Selector</span>
+              <span class="Site-module__colType">Figma Plugin</span>
+            </a>
+
+          </div>
+        </section>
+      </div>
+
+      <div data-reveal>
+        <section class="Site-module__projects Site-module__experience">
+          <div class="Site-module__projectRows">
+            <div class="Site-module__projectRowHighlight" aria-hidden="true"></div>
+            <div class="Site-module__projectRow Site-module__projectRowHeader">
+              <span class="Site-module__colYear">Year</span>
+              <span class="Site-module__colSep" aria-hidden="true"></span>
+              <span class="Site-module__colName">Experience</span>
+              <span class="Site-module__colType">Type</span>
+            </div>
+
+            <a href="https://justgo.com" target="_blank" rel="noopener noreferrer"
+              class="Site-module__projectRow Site-module__experienceRow">
+              <span class="Site-module__colYear">
+                <span>Nov</span>
+                <span>2022</span>
+              </span>
+              <span class="Site-module__colSep" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.4995 5.66968L7.49951 14.3299" stroke="var(--muted)" stroke-width="1.3"
+                    stroke-linecap="round"></path>
+                </svg>
+              </span>
+              <span class="Site-module__colName Site-module__experienceColName">
+                <span class="Site-module__experienceRole">UX Designer</span>
+                <span class="Site-module__experienceMeta">JustGo</span>
+                <span class="Site-module__experienceMeta">Dhaka, Bangladesh</span>
+              </span>
+              <span class="Site-module__colType Site-module__experienceColType">
+                <span>On-site (Hybrid)</span>
+                <span class="Site-module__experienceModeMeta" data-present-start="2022-11">Present &middot; 3yr
+                  4mos</span>
+              </span>
+            </a>
+
+            <a href="https://enoch.app/" target="_blank" rel="noopener noreferrer"
+              class="Site-module__projectRow Site-module__experienceRow">
+              <span class="Site-module__colYear">
+                <span>Jun</span>
+                <span>2022</span>
+              </span>
+              <span class="Site-module__colSep" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.4995 5.66968L7.49951 14.3299" stroke="var(--muted)" stroke-width="1.3"
+                    stroke-linecap="round"></path>
+                </svg>
+              </span>
+              <span class="Site-module__colName Site-module__experienceColName">
+                <span class="Site-module__experienceRole">Product (UX) Designer</span>
+                <span class="Site-module__experienceMeta">Elemets Zero Labs (ENOCH)</span>
+                <span class="Site-module__experienceMeta">London, United Kingdom</span>
+              </span>
+              <span class="Site-module__colType Site-module__experienceColType">
+                <span>Remote</span>
+                <span class="Site-module__experienceModeMeta">Oct 2022 &middot; 5mos</span>
+              </span>
+            </a>
+
+            <a href="http://songbadbd.com/" target="_blank" rel="noopener noreferrer"
+              class="Site-module__projectRow Site-module__experienceRow">
+              <span class="Site-module__colYear">
+                <span>Apr</span>
+                <span>2019</span>
+              </span>
+              <span class="Site-module__colSep" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12.4995 5.66968L7.49951 14.3299" stroke="var(--muted)" stroke-width="1.3"
+                    stroke-linecap="round"></path>
+                </svg>
+              </span>
+              <span class="Site-module__colName Site-module__experienceColName">
+                <span class="Site-module__experienceRole">User Experience Designer</span>
+                <span class="Site-module__experienceMeta">Songbadbd</span>
+                <span class="Site-module__experienceMeta">Dhaka, Bangladesh</span>
+              </span>
+              <span class="Site-module__colType Site-module__experienceColType">
+                <span>On-site</span>
+                <span class="Site-module__experienceModeMeta">Jul 2021 &middot; 2yr 4mos</span>
+              </span>
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <div data-reveal>
+        <section class="Site-module__resumeActions">
+          <a href="https://docs.google.com/document/d/1yns4Ou__jgoIH4F_wmMs7JJIqLs4gCz4j_jelks8vys/export?format=pdf"
+            class="Button-module__button Button-module__secondary Button-module__fullWidthOnMobile" target="_blank"
+            rel="noopener noreferrer">
+            <span style="pointer-events: none;">Get Résumé</span>
+          </a>
+        </section>
+      </div>
+    </main>
+
+    <footer class="SiteFooter-module__footer">
+      <div class="SiteFooter-module__inner shared-module__baseTypography">
+        <div class="SiteFooter-module__card">
+          <p id="visitor-status-line" class="SiteFooter-module__statusLine" role="status" aria-live="polite">
+            Last visitor from somewhere on Earth.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div id="about-me-sheet-backdrop" class="AboutMeSheet-module__backdrop" data-open="false" aria-hidden="true"></div>
+  <aside id="about-me-sheet"
+    class="AboutMeSheet-module__sheet shadows-module__surfaceShadow shared-module__baseTypography" role="dialog"
+    aria-modal="true" aria-labelledby="about-me-sheet-title" tabindex="-1" aria-hidden="true" inert data-open="false">
+    <button type="button" id="about-me-close" class="AboutMeSheet-module__closeButton" aria-label="Close about me sheet">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <div class="AboutMeSheet-module__content">
+      <img src="sayful-avatar.png" alt="Sayful Islam Shakib" class="AboutMeSheet-module__avatar" loading="lazy" />
+      <h2 id="about-me-sheet-title" class="AboutMeSheet-module__title">About me</h2>
+      <p class="AboutMeSheet-module__text">
+        Born and raised in Bangladesh, as a child, I loved working behind the scenes in school plays, whether as the
+        light or music technician, or designing props; I enjoyed doing things that helped the actors on stage shine.
+        This same passion extends to design for me in the present day: I want to help other people and businesses shine
+        and do better work.
+      </p>
+      <p class="AboutMeSheet-module__text">
+        My passion for design is about serving and helping people. I'm driven by ambiguity and love to simplify through
+        intentionality, empowering others through thoughtful designs with a high level of craft.
+      </p>
+      <div class="AboutMeSheet-module__contacts">
+        <ul class="AboutMeSheet-module__contactsList">
+          <li>
+            <a href="https://www.linkedin.com/in/sayfulislamshakib/" target="_blank" rel="noopener noreferrer"
+              aria-label="Connect on LinkedIn">
+              <svg class="AboutMeSheet-module__contactIcon" width="20" height="20" viewBox="0 0 25 25" fill="none"
+                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M7.5 10.75V17.75" stroke="currentcolor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path
+                  d="M11.5 13.75V17.75M11.5 13.75C11.5 12.0931 12.8431 10.75 14.5 10.75C16.1569 10.75 17.5 12.0931 17.5 13.75V17.75M11.5 13.75V10.75"
+                  stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M7.50801 7.75H7.49902" stroke="currentcolor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path
+                  d="M3 12.75C3 8.27166 3 6.03249 4.39124 4.64124C5.78249 3.25 8.02166 3.25 12.5 3.25C16.9783 3.25 19.2175 3.25 20.6088 4.64124C22 6.03249 22 8.27166 22 12.75C22 17.2283 22 19.4675 20.6088 20.8588C19.2175 22.25 16.9783 22.25 12.5 22.25C8.02166 22.25 5.78249 22.25 4.39124 20.8588C3 19.4675 3 17.2283 3 12.75Z"
+                  stroke="currentcolor" stroke-width="2" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://twitter.com/Sayful_shakib" target="_blank" rel="noopener noreferrer"
+              aria-label="Follow on X">
+              <svg class="AboutMeSheet-module__contactIcon" width="20" height="20" viewBox="0 0 24 25" fill="none"
+                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path
+                  d="M3 21.75L10.5484 14.2016M10.5484 14.2016L3 3.75H8L13.4516 11.2984M10.5484 14.2016L16 21.75H21L13.4516 11.2984M21 3.75L13.4516 11.2984"
+                  stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/sayfulislamshakib" target="_blank" rel="noopener noreferrer"
+              aria-label="Follow on GitHub">
+              <svg class="AboutMeSheet-module__contactIcon" width="20" height="20" viewBox="0 0 24 25" fill="none"
+                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path
+                  d="M6.51734 17.8632C6.91177 18.4405 8.10883 19.6728 9.74168 19.9833M9.86428 22.75C8.83582 22.5806 2 20.3557 2 12.8426C2 5.81329 8.0019 2.75 12.0008 2.75C15.9996 2.75 22 5.81329 22 12.8426C22 20.3557 15.1642 22.5806 14.1357 22.75C14.1357 22.75 13.9267 19.3326 14.0487 18.7469C14.1706 18.1613 13.7552 17.2188 13.7552 17.2188C14.7262 16.8555 16.2043 16.3347 16.7001 14.9374C17.0848 13.8532 17.3268 12.2788 16.2508 10.7989C16.2508 10.7989 16.5318 8.40809 15.9996 8.31548C15.4675 8.22287 13.8998 9.26192 13.8998 9.26192C13.4432 9.13248 12.4243 8.88476 12.0018 8.92939C11.5792 8.88476 10.5568 9.13248 10.1002 9.26192C10.1002 9.26192 8.53249 8.22287 8.00036 8.31548C7.46823 8.40809 7.74917 10.7989 7.74917 10.7989C6.67316 12.2788 6.91516 13.8532 7.2999 14.9374C7.79575 16.3347 9.27384 16.8555 10.2448 17.2188C10.2448 17.2188 9.82944 18.1613 9.95135 18.7469C10.0733 19.3326 9.86428 22.75 9.86428 22.75Z"
+                  stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://wa.me/+8801762553379" target="_blank" rel="noopener noreferrer"
+              aria-label="Message on WhatsApp">
+              <svg class="AboutMeSheet-module__contactIcon" width="20" height="20" viewBox="0 0 25 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path
+                  d="M12.5 22C18.0228 22 22.5 17.5228 22.5 12C22.5 6.47715 18.0228 2 12.5 2C6.97715 2 2.5 6.47715 2.5 12C2.5 13.3789 2.77907 14.6926 3.28382 15.8877C3.56278 16.5481 3.70226 16.8784 3.71953 17.128C3.7368 17.3776 3.66334 17.6521 3.51642 18.2012L2.5 22L6.29877 20.9836C6.84788 20.8367 7.12244 20.7632 7.37202 20.7805C7.62161 20.7977 7.95185 20.9372 8.61235 21.2162C9.80745 21.7209 11.1211 22 12.5 22Z"
+                  stroke="currentcolor" stroke-width="2" stroke-linejoin="round" />
+                <path
+                  d="M9.08815 12.3773L9.95909 11.2956C10.3262 10.8397 10.7799 10.4153 10.8155 9.80826C10.8244 9.65494 10.7166 8.96657 10.5008 7.58986C10.416 7.04881 9.91086 7 9.47332 7C8.90314 7 8.61805 7 8.33495 7.12931C7.97714 7.29275 7.60979 7.75231 7.52917 8.13733C7.46539 8.44196 7.51279 8.65187 7.60759 9.07169C8.01023 10.8548 8.95481 12.6158 10.4195 14.0805C11.8842 15.5452 13.6452 16.4898 15.4283 16.8924C15.8481 16.9872 16.058 17.0346 16.3627 16.9708C16.7477 16.8902 17.2072 16.5229 17.3707 16.165C17.5 15.8819 17.5 15.5969 17.5 15.0267C17.5 14.5891 17.4512 14.084 16.9101 13.9992C15.5334 13.7834 14.8451 13.6756 14.6917 13.6845C14.0847 13.7201 13.6603 14.1738 13.2044 14.5409L12.1227 15.4118"
+                  stroke="currentcolor" stroke-width="2" />
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:sayfulislamshakib.cs@gmail.com" aria-label="Send email">
+              <svg class="AboutMeSheet-module__contactIcon" width="20" height="20" viewBox="0 0 25 25" fill="none"
+                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M2.5 6.75L9.41302 10.667C11.9616 12.111 13.0384 12.111 15.587 10.667L22.5 6.75"
+                  stroke="currentcolor" stroke-width="2" stroke-linejoin="round" />
+                <path
+                  d="M2.51577 14.2256C2.58114 17.2912 2.61383 18.8239 3.74496 19.9594C4.87608 21.0948 6.45033 21.1343 9.59883 21.2134C11.5393 21.2622 13.4607 21.2622 15.4012 21.2134C18.5497 21.1343 20.1239 21.0948 21.2551 19.9594C22.3862 18.8239 22.4189 17.2912 22.4842 14.2256C22.5053 13.2399 22.5053 12.2601 22.4842 11.2744C22.4189 8.20886 22.3862 6.67609 21.2551 5.54066C20.1239 4.40523 18.5497 4.36568 15.4012 4.28657C13.4607 4.23781 11.5393 4.23781 9.59882 4.28656C6.45033 4.36566 4.87608 4.40521 3.74495 5.54065C2.61382 6.67608 2.58114 8.20885 2.51576 11.2744C2.49474 12.2601 2.49475 13.2399 2.51577 14.2256Z"
+                  stroke="currentcolor" stroke-width="2" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+</body>
+
 </html>

@@ -998,7 +998,7 @@
 
   function formatExperienceDuration(totalMonths) {
     if (totalMonths <= 0) {
-      return '0 mos';
+      return '0mos';
     }
 
     const years = Math.floor(totalMonths / 12);
@@ -1009,11 +1009,11 @@
       parts.push(`${years}yr`);
     }
     if (months > 0) {
-      parts.push(`${months} mo${months === 1 ? '' : 's'}`);
+      parts.push(`${months}mo${months === 1 ? '' : 's'}`);
     }
 
     if (parts.length === 0) {
-      return '0 mos';
+      return '0mos';
     }
     return parts.join(' ');
   }

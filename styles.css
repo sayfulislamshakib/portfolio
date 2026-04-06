@@ -116,13 +116,19 @@
   opacity: 1;
   pointer-events: none;
   will-change: opacity;
-  transition: opacity 0.35s;
+  transition: opacity 0.3s var(--ease-smooth);
   position: fixed;
   inset: 0;
 }
 
 .ThemeTransitionOverlay-module__overlay[data-visible="false"] {
   opacity: 0;
+  transition-delay: 0.1s;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.3s;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -167,12 +173,14 @@
   position: absolute;
   top: 2px;
   left: 2px;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow:
     0 0.5px #11111114,
     0 0 0 0.5px #11111114;
 }
 
 [data-theme="dark"] .ThemeToggle-module__indicator {
+  transform: translateX(26px);
   box-shadow:
     inset 0 0.5px #f2f2f214,
     inset 0 0 0 0.5px #f2f2f214;
@@ -187,6 +195,7 @@
   border-radius: 99px;
   justify-content: center;
   align-items: center;
+  transition: color 0.2s ease;
   display: flex;
   position: relative;
 }
@@ -283,6 +292,7 @@
   --ease-swift: cubic-bezier(0.175, 0.885, 0.32, 1.275);
   --duration-smooth: 0.3s;
   --ease-smooth: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --opacity-muted: 0.7;
   --opacity-version: 0.5;
   --opacity-hover: 0.92;
@@ -378,8 +388,7 @@ body {
 }
 
 .InlineTooltip-module__tooltip {
-  margin-bottom: var(--space-2);
-  z-index: 9999;
+  z-index: 99999;
   background: var(--bg);
   color: var(--fg-accent);
   border: 0.5px solid var(--border);
@@ -390,14 +399,32 @@ body {
   border-radius: 6px;
   justify-content: center;
   align-items: center;
-  padding: 0.0625rem 0.375rem;
+  padding: 4px 8px;
   font-size: 0.75rem;
   font-weight: 500;
   line-height: 1.25rem;
   display: flex;
   position: absolute;
-  bottom: 100%;
-  overflow: hidden;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  width: max-content;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-50%) translateY(4px) !important;
+  transition:
+    opacity 0.15s var(--ease-smooth),
+    transform 0.15s var(--ease-smooth),
+    visibility 0s linear 0.15s;
+}
+
+.InlineTooltip-module__tooltip[data-open="true"] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0) !important;
+  transition:
+    opacity 0.25s var(--ease-smooth),
+    transform 0.25s var(--ease-smooth),
+    visibility 0s linear 0s;
 }
 
 .TwitterHoverCard-module__trigger {
@@ -1454,6 +1481,18 @@ body {
   display: flex;
 }
 
+.AboutMePage-module__header {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (max-width: 640px) {
+  .AboutMePage-module__header {
+    padding-left: var(--space-2);
+    padding-right: var(--space-2);
+  }
+}
+
 .Site-module__name {
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
@@ -1758,17 +1797,14 @@ body {
 
 .reveal-ready [data-reveal] {
   opacity: 0;
-  filter: blur(10px);
-  transform: translateY(20px);
+  transform: translateY(8px);
   transition:
-    opacity 0.65s var(--ease-smooth),
-    filter 0.65s var(--ease-smooth),
-    transform 0.65s var(--ease-smooth);
+    opacity 0.35s var(--ease-out-quad),
+    transform 0.35s var(--ease-out-quad);
 }
 
 .reveal-ready [data-reveal].is-visible {
   opacity: 1;
-  filter: blur(0);
   transform: translateY(0);
 }
 
@@ -1776,8 +1812,8 @@ body {
   width: 24px;
   transform: translateX(0);
   transition:
-    transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-    width 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 [data-theme="dark"] .theme-toggle-indicator {
@@ -1835,100 +1871,13 @@ body {
   transform: translateY(0) scale(1);
 }
 
-body.about-me-sheet-open {
-  overflow: hidden;
-}
-
-.AboutMeSheet-module__backdrop {
-  inset: 0;
-  z-index: calc(var(--z-inline-tooltip) + 1);
-  background: #ffffffc7;
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition:
-    opacity 0.6s var(--ease-smooth),
-    visibility 0s linear 0.6s;
-  position: fixed;
-}
-
-[data-theme="dark"] .AboutMeSheet-module__backdrop {
-  background: #00000099;
-}
-
-.AboutMeSheet-module__backdrop[data-open="true"] {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transition:
-    opacity 0.6s var(--ease-smooth),
-    visibility 0s linear 0s;
-}
-
-.AboutMeSheet-module__sheet {
-  width: fit-content;
-  max-width: calc(100% - var(--space-6));
-  height: fit-content;
-  max-height: min(78vh, 44rem);
-  background: var(--bg);
-  color: var(--fg-accent);
-  border: 1px solid var(--border);
-  border-radius: 24px 24px 1rem 1rem;
-  box-shadow:
-    0 64px 180px #00000024,
-    0 30px 90px #00000018,
-    0 12px 36px #00000010;
-  z-index: calc(var(--z-inline-tooltip) + 2);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translate(-50%, -50%) scale(1.04);
-  transition:
-    transform 0.6s cubic-bezier(0.32, 0.72, 0, 1),
-    opacity 0.6s var(--ease-smooth),
-    visibility 0s linear 0.6s;
-  will-change: transform, opacity;
-  inset: 50% auto auto 50%;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  position: fixed;
-}
-
-[data-theme="dark"] .AboutMeSheet-module__sheet {
-  box-shadow:
-    0 68px 190px #000000a3,
-    0 34px 100px #0000007a,
-    0 14px 40px #00000059;
-}
-
-.AboutMeSheet-module__sheet[data-open="true"] {
-  width: fit-content;
-  max-width: calc(100% - var(--space-6));
-  height: fit-content;
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translate(-50%, -50%) scale(1);
-  transition:
-    transform 0.6s cubic-bezier(0.32, 0.72, 0, 1),
-    opacity 0.6s var(--ease-smooth),
-    visibility 0s linear 0s;
-}
-
 .AboutMeSheet-module__closeButton {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  z-index: 10;
-  width: 28px;
-  height: 28px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--button-secondary);
+  background: transparent;
   color: var(--link-muted);
   border: none;
   border-radius: 50%;
@@ -1938,138 +1887,114 @@ body.about-me-sheet-open {
 }
 
 .AboutMeSheet-module__closeButton:hover {
-  background: var(--button-secondary-hover);
+  background: var(--button-secondary);
   color: var(--fg);
 }
 
 .AboutMeSheet-module__closeButton:active {
-  transform: scale(0.96);
+  transform: scale(0.92);
 }
 
+
+
 .AboutMeSheet-module__content {
-  width: calc(584px + (var(--space-6) * 2));
+  width: 100%;
   max-width: 100%;
   margin: 0;
   overflow: auto;
   box-sizing: border-box;
-  padding: var(--space-6);
+  padding: var(--space-7) var(--space-2);
+}
+
+.AboutMeSheet-module__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  justify-items: start;
+  align-items: start;
+}
+
+.AboutMeSheet-module__avatarColumn {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .AboutMeSheet-module__avatar {
-  width: 224px;
-  height: 224px;
+  width: 248px;
+  height: 248px;
+  min-width: 248px;
+  max-width: 248px;
+  flex-shrink: 0;
+  aspect-ratio: 1;
   object-fit: cover;
   border: 1px solid var(--border);
-  border-radius: var(--radius-card);
-  margin: 0 0 var(--space-4);
+  border-radius: 24px;
+  box-sizing: border-box;
 }
 
 .AboutMeSheet-module__title {
   margin: 0 0 var(--space-3);
-  color: #121212;
-  font-size: 1.125rem;
+  color: var(--fg);
+  font-size: var(--font-size-body);
   line-height: 1.3;
   font-weight: var(--font-weight-medium);
 }
 
 [data-theme="dark"] .AboutMeSheet-module__title {
-  color: #f5f5f5;
+  color: var(--fg);
 }
 
 .AboutMeSheet-module__text {
   margin: 0 0 var(--space-4);
-  color: #2b2b2b;
+  color: var(--fg-accent);
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
 }
 
 [data-theme="dark"] .AboutMeSheet-module__text {
-  color: #dddddd;
+  color: var(--fg-accent);
 }
 
 .AboutMeSheet-module__text:last-child {
   margin-bottom: 0;
 }
 
-.AboutMeSheet-module__contacts {
-  margin-top: var(--space-5);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--border);
-}
-
-.AboutMeSheet-module__contactsList {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
-
-.AboutMeSheet-module__contactsList li {
-  margin: 0;
-}
-
-.AboutMeSheet-module__contactsList a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border: none;
-  border-radius: var(--radius-button);
-  background: var(--button-secondary);
+.AboutMeSheet-module__text a {
   color: var(--link-muted);
-  text-decoration: none;
-  transition: color 0.15s, background-color 0.15s, transform 0.15s;
-}
-
-.AboutMeSheet-module__contactsList a:active {
-  transform: scale(0.97);
-}
-
-.AboutMeSheet-module__contactIcon {
-  width: 1.125rem;
-  height: 1.125rem;
-  flex-shrink: 0;
+  text-decoration: underline;
+  -webkit-text-decoration-color: var(--border);
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+  transition:
+    color 0.15s,
+    text-decoration-color 0.15s;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .AboutMeSheet-module__contactsList a:hover {
-    background: var(--button-secondary-hover);
+  .AboutMeSheet-module__text a:hover {
+    color: var(--button-primary);
+    -webkit-text-decoration-color: var(--button-primary);
+    text-decoration-color: var(--button-primary);
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .AboutMeSheet-module__content {
+    width: 100%;
+    padding: var(--space-4) 0 var(--space-6);
   }
 }
 
 @media (max-width: 640px) {
-  .AboutMeSheet-module__sheet {
-    width: 100%;
-    max-height: min(84vh, 44rem);
-    border-bottom: 0;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    inset: auto auto 0 50%;
-    transform: translateX(-50%) translateY(calc(100% + var(--space-10)));
-    border-left: 0;
-    border-right: 0;
-  }
-
-  .AboutMeSheet-module__sheet[data-open="true"] {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    transform: translateX(-50%) translateY(0);
-  }
-
-  .AboutMeSheet-module__closeButton {
-    top: 0.75rem;
-    right: 0.75rem;
-  }
-
   .AboutMeSheet-module__content {
     width: 100%;
-    padding: var(--space-4);
+    padding: var(--space-4) 0;
   }
 }
+
+
 
 @media (prefers-reduced-motion: reduce) {
   .reveal-ready [data-reveal] {
@@ -2088,11 +2013,6 @@ body.about-me-sheet-open {
   }
 
   .inline-tooltip-local {
-    transition: none;
-  }
-
-  .AboutMeSheet-module__backdrop,
-  .AboutMeSheet-module__sheet {
     transition: none;
   }
 }

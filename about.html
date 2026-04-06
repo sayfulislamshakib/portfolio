@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" style="color-scheme: light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Sayful Islam Shakib</title>
+  <meta name="description" content="Learn more about Sayful Islam Shakib, a UX designer based in Dhaka, Bangladesh." />
+  <link rel="canonical" href="https://sayfulislamshakib.github.io/portfolio-2026/about" />
+  <meta property="og:title" content="About — Sayful Islam Shakib" />
+  <meta property="og:description" content="Designer based in Dhaka, Bangladesh. UX designer at JustGo." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="sayful-avatar.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="theme-color" content="#fafafa" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <script>
+    (function () {
+      try {
+        var savedPreference = localStorage.getItem("theme-preference");
+        if (savedPreference !== "system" && savedPreference !== "light" && savedPreference !== "dark") {
+          var legacyTheme = localStorage.getItem("theme");
+          savedPreference = (legacyTheme === "dark" || legacyTheme === "light") ? legacyTheme : "system";
+        }
+        var resolvedTheme = (savedPreference === "dark" || savedPreference === "light")
+          ? savedPreference
+          : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", resolvedTheme);
+        document.documentElement.style.colorScheme = resolvedTheme;
+      } catch (error) {
+      }
+    })();
+  </script>
+  <script>document.documentElement.classList.add('reveal-ready');</script>
+  <link rel="preconnect" href="https://rsms.me" crossorigin="anonymous" />
+  <link href="https://rsms.me/inter/inter.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <div id="theme-transition-overlay" class="ThemeTransitionOverlay-module__overlay" data-visible="false"></div>
+  <div data-vaul-drawer-wrapper="" style="background-color: var(--bg); min-height: 100vh;">
+    <main class="Site-module__container shared-module__baseTypography">
+      <div data-reveal>
+        <header class="Site-module__header AboutMePage-module__header">
+          <a href="index.html" class="AboutMeSheet-module__closeButton AboutMeSheet-module__backButton"
+            aria-label="Back to home">
+            <svg aria-hidden="true" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <path
+                  d="M7.45703 5.70711C7.84756 5.31658 7.84756 4.68342 7.45703 4.29289C7.06651 3.90237 6.43334 3.90237 6.04282 4.29289L2.39637 7.93934C1.81058 8.52513 1.81059 9.47487 2.39637 10.0607L6.04282 13.7071C6.43334 14.0976 7.06651 14.0976 7.45703 13.7071C7.84756 13.3166 7.84756 12.6834 7.45703 12.2929L5.16414 10H19C19.5523 10 20 10.4477 20 11V16C20 16.5523 19.5523 17 19 17H12C11.4477 17 11 17.4477 11 18C11 18.5523 11.4477 19 12 19H19C20.6569 19 22 17.6569 22 16V11C22 9.34315 20.6569 8 19 8H5.16414L7.45703 5.70711Z"
+                  fill="currentColor"></path>
+              </g>
+            </svg>
+          </a>
+
+
+        </header>
+      </div>
+
+      <div data-reveal>
+        <div class="AboutMeSheet-module__content">
+          <div class="AboutMeSheet-module__grid">
+            <div class="AboutMeSheet-module__avatarColumn">
+              <img src="sayful-avatar.png" alt="Sayful Islam Shakib" class="AboutMeSheet-module__avatar"
+                loading="lazy" />
+            </div>
+            <div class="AboutMeSheet-module__bioColumn">
+              <h2 id="about-me-sheet-title" class="AboutMeSheet-module__title">About me</h2>
+              <p class="AboutMeSheet-module__text">
+                Born and raised in Bangladesh, as a child, I loved working behind the scenes in school plays, whether as
+                the
+                light or music technician, or designing props; I enjoyed doing things that helped the actors on stage
+                shine.
+                This same passion extends to design for me in the present day: I want to help other people and
+                businesses shine
+                and do better work.
+              </p>
+              <p class="AboutMeSheet-module__text">
+                My passion for design is about serving and helping people. I'm driven by ambiguity and love to simplify
+                through
+                intentionality, empowering others through thoughtful designs with a high level of craft.
+              <p class="AboutMeSheet-module__text">
+                You can reach me on <a href="https://twitter.com/Sayful_shakib" target="_blank"
+                  rel="noopener noreferrer">X (Twitter)</a>,
+                <a href="https://www.linkedin.com/in/sayfulislamshakib/" target="_blank"
+                  rel="noopener noreferrer">LinkedIn</a>,
+                <a href="https://github.com/sayfulislamshakib" target="_blank" rel="noopener noreferrer">GitHub</a>,
+                <a href="https://wa.me/+8801762553379" target="_blank" rel="noopener noreferrer">WhatsApp</a> or
+                <span class="InlineTooltip-module__tooltipWrapper js-email-copy-trigger">
+                  <a href="mailto:connect.sayful@gmail.com" aria-label="Copy email">Email</a>
+                  <span class="InlineTooltip-module__tooltip shadows-module__surfaceShadow inline-tooltip-local"
+                    data-open="false">Click to copy</span>
+                </span>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="SiteFooter-module__footer">
+      <div class="SiteFooter-module__inner shared-module__baseTypography">
+        <div class="SiteFooter-module__card">
+          <p id="visitor-status-line" class="SiteFooter-module__statusLine" role="status" aria-live="polite">
+            Last visitor from somewhere on Earth.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>

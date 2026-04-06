@@ -38,6 +38,7 @@
       }
     })();
   </script>
+  <script>document.documentElement.classList.add('reveal-ready');</script>
   <link rel="preconnect" href="https://rsms.me" crossorigin="anonymous" />
   <link href="https://rsms.me/inter/inter.css" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
@@ -45,6 +46,7 @@
 </head>
 
 <body>
+  <div id="theme-transition-overlay" class="ThemeTransitionOverlay-module__overlay" data-visible="false"></div>
   <div data-vaul-drawer-wrapper="" style="background-color: var(--bg); min-height: 100vh;">
     <main class="Site-module__container shared-module__baseTypography">
       <div data-reveal>
@@ -55,8 +57,8 @@
           </div>
 
           <div class="Site-module__headerActions">
-            <button type="button" id="theme-toggle" class="ThemeToggle-module__track" aria-label="Toggle color theme"
-              aria-pressed="false">
+            <button type="button" id="theme-toggle" class="ThemeToggle-module__track js-theme-toggle"
+              aria-label="Toggle color theme" aria-pressed="false">
               <span class="ThemeToggle-module__indicator theme-toggle-indicator"></span>
               <span class="ThemeToggle-module__slot theme-toggle-slot" data-theme-slot="light" aria-hidden="true">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -93,7 +95,16 @@
             I translate complex technical details into efficient, high-value tools. I believe details matter — the last
             10% makes the difference.
           </p>
-          <p>Previously at <span id="enoch-trigger-wrap" class="JustGoSportsLink-module__trigger"><a id="enoch-trigger" href="https://enoch.app/" target="_blank" rel="noopener noreferrer" class="JustGoSportsLink-module__link"><span style="pointer-events: none;">Element Zero Labs (ENOCH)</span></a></span>, and <span id="songbad-trigger-wrap" class="JustGoSportsLink-module__trigger"><a id="songbad-trigger" href="http://songbadbd.com/" target="_blank" rel="noopener noreferrer" class="JustGoSportsLink-module__link"><span style="pointer-events: none;">Songbadbd</span></a></span>, outside work, I like to explore <a href="https://github.com/sayfulislamshakib" target="_blank" rel="noopener noreferrer"><span style="pointer-events: none;">programming</span></a>, more <a id="about-me-trigger" href="#about-me-sheet" aria-controls="about-me-sheet" aria-expanded="false"><span style="pointer-events: none;">about me</span></a>.</p>
+          <p>Previously at <span id="enoch-trigger-wrap" class="JustGoSportsLink-module__trigger"><a id="enoch-trigger"
+                href="https://enoch.app/" target="_blank" rel="noopener noreferrer"
+                class="JustGoSportsLink-module__link"><span style="pointer-events: none;">Element Zero Labs
+                  (ENOCH)</span></a></span>, and <span id="songbad-trigger-wrap"
+              class="JustGoSportsLink-module__trigger"><a id="songbad-trigger" href="http://songbadbd.com/"
+                target="_blank" rel="noopener noreferrer" class="JustGoSportsLink-module__link"><span
+                  style="pointer-events: none;">Songbadbd</span></a></span>, outside work, I like to explore <a
+              href="https://github.com/sayfulislamshakib" target="_blank" rel="noopener noreferrer"><span
+                style="pointer-events: none;">programming</span></a>, more <a id="about-me-trigger"
+              href="about.html"><span style="pointer-events: none;">about me</span></a>.</p>
 
           <div class="Site-module__bioLine">
             Reach me at
@@ -102,11 +113,10 @@
                   style="pointer-events: none;">@Sayful_shakib</span></a>
             </span>
             &middot;
-            <span class="InlineTooltip-module__tooltipWrapper">
-              <a id="email-copy-link" href="mailto:connect.sayful@gmail.com"><span
+            <span class="InlineTooltip-module__tooltipWrapper js-email-copy-trigger">
+              <a href="mailto:connect.sayful@gmail.com"><span
                   style="pointer-events: none;">connect.sayful@gmail.com</span></a>
-              <span id="email-tooltip"
-                class="InlineTooltip-module__tooltip shadows-module__surfaceShadow inline-tooltip-local"
+              <span class="InlineTooltip-module__tooltip shadows-module__surfaceShadow inline-tooltip-local"
                 data-open="false">Click to copy</span>
             </span>
           </div>
@@ -164,8 +174,10 @@
               </span>
               <span class="Site-module__colName">
                 Result Management
-                <svg class="Site-module__projectArrow" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M18 15V6M18 6H9M18 6L6.25 17.75" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg class="Site-module__projectArrow" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M18 15V6M18 6H9M18 6L6.25 17.75" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="Site-module__colType">Web App</span>
@@ -182,8 +194,10 @@
               </span>
               <span class="Site-module__colName">
                 Figma to React Automation Bridge
-                <svg class="Site-module__projectArrow" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M18 15V6M18 6H9M18 6L6.25 17.75" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg class="Site-module__projectArrow" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M18 15V6M18 6H9M18 6L6.25 17.75" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="Site-module__colType">Figma Plugin</span>
@@ -200,8 +214,10 @@
               </span>
               <span class="Site-module__colName">
                 Variant Layer Selector
-                <svg class="Site-module__projectArrow" width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M18 15V6M18 6H9M18 6L6.25 17.75" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <svg class="Site-module__projectArrow" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M18 15V6M18 6H9M18 6L6.25 17.75" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
               </span>
               <span class="Site-module__colType">Figma Plugin</span>
@@ -316,103 +332,6 @@
       </div>
     </footer>
   </div>
-
-  <div id="about-me-sheet-backdrop" class="AboutMeSheet-module__backdrop" data-open="false" aria-hidden="true"></div>
-  <aside id="about-me-sheet"
-    class="AboutMeSheet-module__sheet shadows-module__surfaceShadow shared-module__baseTypography" role="dialog"
-    aria-modal="true" aria-labelledby="about-me-sheet-title" tabindex="-1" aria-hidden="true" inert data-open="false">
-    <button type="button" id="about-me-close" class="AboutMeSheet-module__closeButton" aria-label="Close about me sheet">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
-    <div class="AboutMeSheet-module__content">
-      <img src="sayful-avatar.png" alt="Sayful Islam Shakib" class="AboutMeSheet-module__avatar" loading="lazy" />
-      <h2 id="about-me-sheet-title" class="AboutMeSheet-module__title">About me</h2>
-      <p class="AboutMeSheet-module__text">
-        Born and raised in Bangladesh, as a child, I loved working behind the scenes in school plays, whether as the
-        light or music technician, or designing props; I enjoyed doing things that helped the actors on stage shine.
-        This same passion extends to design for me in the present day: I want to help other people and businesses shine
-        and do better work.
-      </p>
-      <p class="AboutMeSheet-module__text">
-        My passion for design is about serving and helping people. I'm driven by ambiguity and love to simplify through
-        intentionality, empowering others through thoughtful designs with a high level of craft.
-      </p>
-      <div class="AboutMeSheet-module__contacts">
-        <ul class="AboutMeSheet-module__contactsList">
-          <li>
-            <a href="https://www.linkedin.com/in/sayfulislamshakib/" target="_blank" rel="noopener noreferrer"
-              aria-label="Connect on LinkedIn">
-              <svg class="AboutMeSheet-module__contactIcon" width="20" height="20" viewBox="0 0 25 25" fill="none"
-                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M7.5 10.75V17.75" stroke="currentcolor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" />
-                <path
-                  d="M11.5 13.75V17.75M11.5 13.75C11.5 12.0931 12.8431 10.75 14.5 10.75C16.1569 10.75 17.5 12.0931 17.5 13.75V17.75M11.5 13.75V10.75"
-                  stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M7.50801 7.75H7.49902" stroke="currentcolor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" />
-                <path
-                  d="M3 12.75C3 8.27166 3 6.03249 4.39124 4.64124C5.78249 3.25 8.02166 3.25 12.5 3.25C16.9783 3.25 19.2175 3.25 20.6088 4.64124C22 6.03249 22 8.27166 22 12.75C22 17.2283 22 19.4675 20.6088 20.8588C19.2175 22.25 16.9783 22.25 12.5 22.25C8.02166 22.25 5.78249 22.25 4.39124 20.8588C3 19.4675 3 17.2283 3 12.75Z"
-                  stroke="currentcolor" stroke-width="2" stroke-linejoin="round" />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="https://twitter.com/Sayful_shakib" target="_blank" rel="noopener noreferrer"
-              aria-label="Follow on X">
-              <svg class="AboutMeSheet-module__contactIcon" width="20" height="20" viewBox="0 0 24 25" fill="none"
-                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path
-                  d="M3 21.75L10.5484 14.2016M10.5484 14.2016L3 3.75H8L13.4516 11.2984M10.5484 14.2016L16 21.75H21L13.4516 11.2984M21 3.75L13.4516 11.2984"
-                  stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/sayfulislamshakib" target="_blank" rel="noopener noreferrer"
-              aria-label="Follow on GitHub">
-              <svg class="AboutMeSheet-module__contactIcon" width="20" height="20" viewBox="0 0 24 25" fill="none"
-                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path
-                  d="M6.51734 17.8632C6.91177 18.4405 8.10883 19.6728 9.74168 19.9833M9.86428 22.75C8.83582 22.5806 2 20.3557 2 12.8426C2 5.81329 8.0019 2.75 12.0008 2.75C15.9996 2.75 22 5.81329 22 12.8426C22 20.3557 15.1642 22.5806 14.1357 22.75C14.1357 22.75 13.9267 19.3326 14.0487 18.7469C14.1706 18.1613 13.7552 17.2188 13.7552 17.2188C14.7262 16.8555 16.2043 16.3347 16.7001 14.9374C17.0848 13.8532 17.3268 12.2788 16.2508 10.7989C16.2508 10.7989 16.5318 8.40809 15.9996 8.31548C15.4675 8.22287 13.8998 9.26192 13.8998 9.26192C13.4432 9.13248 12.4243 8.88476 12.0018 8.92939C11.5792 8.88476 10.5568 9.13248 10.1002 9.26192C10.1002 9.26192 8.53249 8.22287 8.00036 8.31548C7.46823 8.40809 7.74917 10.7989 7.74917 10.7989C6.67316 12.2788 6.91516 13.8532 7.2999 14.9374C7.79575 16.3347 9.27384 16.8555 10.2448 17.2188C10.2448 17.2188 9.82944 18.1613 9.95135 18.7469C10.0733 19.3326 9.86428 22.75 9.86428 22.75Z"
-                  stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="https://wa.me/+8801762553379" target="_blank" rel="noopener noreferrer"
-              aria-label="Message on WhatsApp">
-              <svg class="AboutMeSheet-module__contactIcon" width="20" height="20" viewBox="0 0 25 24" fill="none"
-                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path
-                  d="M12.5 22C18.0228 22 22.5 17.5228 22.5 12C22.5 6.47715 18.0228 2 12.5 2C6.97715 2 2.5 6.47715 2.5 12C2.5 13.3789 2.77907 14.6926 3.28382 15.8877C3.56278 16.5481 3.70226 16.8784 3.71953 17.128C3.7368 17.3776 3.66334 17.6521 3.51642 18.2012L2.5 22L6.29877 20.9836C6.84788 20.8367 7.12244 20.7632 7.37202 20.7805C7.62161 20.7977 7.95185 20.9372 8.61235 21.2162C9.80745 21.7209 11.1211 22 12.5 22Z"
-                  stroke="currentcolor" stroke-width="2" stroke-linejoin="round" />
-                <path
-                  d="M9.08815 12.3773L9.95909 11.2956C10.3262 10.8397 10.7799 10.4153 10.8155 9.80826C10.8244 9.65494 10.7166 8.96657 10.5008 7.58986C10.416 7.04881 9.91086 7 9.47332 7C8.90314 7 8.61805 7 8.33495 7.12931C7.97714 7.29275 7.60979 7.75231 7.52917 8.13733C7.46539 8.44196 7.51279 8.65187 7.60759 9.07169C8.01023 10.8548 8.95481 12.6158 10.4195 14.0805C11.8842 15.5452 13.6452 16.4898 15.4283 16.8924C15.8481 16.9872 16.058 17.0346 16.3627 16.9708C16.7477 16.8902 17.2072 16.5229 17.3707 16.165C17.5 15.8819 17.5 15.5969 17.5 15.0267C17.5 14.5891 17.4512 14.084 16.9101 13.9992C15.5334 13.7834 14.8451 13.6756 14.6917 13.6845C14.0847 13.7201 13.6603 14.1738 13.2044 14.5409L12.1227 15.4118"
-                  stroke="currentcolor" stroke-width="2" />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <a href="mailto:sayfulislamshakib.cs@gmail.com" aria-label="Send email">
-              <svg class="AboutMeSheet-module__contactIcon" width="20" height="20" viewBox="0 0 25 25" fill="none"
-                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M2.5 6.75L9.41302 10.667C11.9616 12.111 13.0384 12.111 15.587 10.667L22.5 6.75"
-                  stroke="currentcolor" stroke-width="2" stroke-linejoin="round" />
-                <path
-                  d="M2.51577 14.2256C2.58114 17.2912 2.61383 18.8239 3.74496 19.9594C4.87608 21.0948 6.45033 21.1343 9.59883 21.2134C11.5393 21.2622 13.4607 21.2622 15.4012 21.2134C18.5497 21.1343 20.1239 21.0948 21.2551 19.9594C22.3862 18.8239 22.4189 17.2912 22.4842 14.2256C22.5053 13.2399 22.5053 12.2601 22.4842 11.2744C22.4189 8.20886 22.3862 6.67609 21.2551 5.54066C20.1239 4.40523 18.5497 4.36568 15.4012 4.28657C13.4607 4.23781 11.5393 4.23781 9.59882 4.28656C6.45033 4.36566 4.87608 4.40521 3.74495 5.54065C2.61382 6.67608 2.58114 8.20885 2.51576 11.2744C2.49474 12.2601 2.49475 13.2399 2.51577 14.2256Z"
-                  stroke="currentcolor" stroke-width="2" stroke-linejoin="round" />
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </aside>
 </body>
 
 </html>

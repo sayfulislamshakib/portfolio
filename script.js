@@ -7,9 +7,36 @@
   }
 
   const root = document.documentElement;
-  root.classList.add('reveal-ready');
+  const revealBlocks = Array.from(document.querySelectorAll('[data-reveal]'));
+
+  function runRevealAnimation() {
+    // Initial hidden state if not already handled by inline script
+    root.classList.add('reveal-ready');
+
+    // Ensure all blocks start hidden
+    revealBlocks.forEach(block => block.classList.remove('is-visible'));
+
+    // Staggered entrance
+    requestAnimationFrame(() => {
+      revealBlocks.forEach((block, index) => {
+        const delay = index * 30;
+        window.setTimeout(() => {
+          block.classList.add('is-visible');
+        }, delay);
+      });
+    });
+  }
+
+  runRevealAnimation();
+
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+      runRevealAnimation();
+    }
+  });
+
   const themeMeta = document.querySelector('meta[name="theme-color"]');
-  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggles = Array.from(document.querySelectorAll('.js-theme-toggle'));
   const themeSlots = Array.from(document.querySelectorAll('.theme-toggle-slot'));
   const headerClock = document.getElementById('header-clock');
   const visitorStatusLine = document.getElementById('visitor-status-line');
@@ -21,14 +48,9 @@
   const enochAnchor = document.getElementById('enoch-trigger');
   const songbadTrigger = document.getElementById('songbad-trigger-wrap');
   const songbadAnchor = document.getElementById('songbad-trigger');
-  const aboutMeTrigger = document.getElementById('about-me-trigger');
-  const aboutMeSheet = document.getElementById('about-me-sheet');
-  const aboutMeSheetBackdrop = document.getElementById('about-me-sheet-backdrop');
   const twitterTrigger = document.getElementById('twitter-trigger-wrap');
   const twitterAnchor = document.getElementById('twitter-trigger');
   const twitterCard = document.getElementById('twitter-card');
-  const emailCopyLink = document.getElementById('email-copy-link');
-  const emailTooltip = document.getElementById('email-tooltip');
   const presentDurationElements = Array.from(document.querySelectorAll('[data-present-start]'));
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
   const THEME_STORAGE_KEY = 'theme-preference';
@@ -78,9 +100,9 @@
       themeMeta.setAttribute('content', theme === 'dark' ? '#1a1a1a' : '#fafafa');
     }
 
-    if (themeToggle) {
-      themeToggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
-    }
+    themeToggles.forEach((btn) => {
+      btn.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+    });
 
     themeSlots.forEach((slot) => {
       slot.classList.toggle('ThemeToggle-module__slotActive', slot.dataset.themeSlot === theme);
@@ -90,15 +112,41 @@
   let themePreference = readStoredThemePreference() || 'system';
   setTheme(resolveThemeFromPreference(themePreference));
 
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
+  const transitionOverlay = document.getElementById('theme-transition-overlay');
+
+  themeToggles.forEach((btn) => {
+    btn.addEventListener('click', async () => {
       const currentTheme = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
       const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
       themePreference = nextTheme;
       writeThemePreference(themePreference);
-      setTheme(nextTheme);
+
+      const updateTheme = () => {
+        setTheme(nextTheme);
+      };
+
+      if (document.startViewTransition) {
+        document.documentElement.dataset.themeTransitioning = 'true';
+        const transition = document.startViewTransition(updateTheme);
+        try {
+          await transition.finished;
+        } finally {
+          delete document.documentElement.dataset.themeTransitioning;
+        }
+      } else if (transitionOverlay) {
+        transitionOverlay.style.setProperty('--overlay-bg', getComputedStyle(root).getPropertyValue('--bg'));
+        transitionOverlay.dataset.visible = 'true';
+
+        await new Promise(r => setTimeout(r, 40));
+        updateTheme();
+
+        await new Promise(r => setTimeout(r, 160));
+        transitionOverlay.dataset.visible = 'false';
+      } else {
+        updateTheme();
+      }
     });
-  }
+  });
 
   function handleSystemThemeChange() {
     if (themePreference === 'system') {
@@ -618,121 +666,6 @@
     openClass: 'TwitterHoverCard-module__cardOpen'
   });
 
-  function setupAboutMeSheet(options) {
-    const {
-      trigger,
-      sheet,
-      backdrop
-    } = options;
-
-    if (!trigger || !sheet || !backdrop) {
-      return;
-    }
-
-    if (!sheet.hasAttribute('tabindex')) {
-      sheet.setAttribute('tabindex', '-1');
-    }
-
-    let lastFocusedElement = null;
-    let unlockScrollTimeout = null;
-    const SHEET_CLOSE_TRANSITION_MS = 650;
-
-    function clearUnlockScrollTimeout() {
-      if (unlockScrollTimeout) {
-        clearTimeout(unlockScrollTimeout);
-        unlockScrollTimeout = null;
-      }
-    }
-
-    function removeBodyModalClass() {
-      document.body.classList.remove('about-me-sheet-open');
-      clearUnlockScrollTimeout();
-    }
-
-    function setOpenState(isOpen) {
-      clearUnlockScrollTimeout();
-      sheet.dataset.open = isOpen ? 'true' : 'false';
-      backdrop.dataset.open = isOpen ? 'true' : 'false';
-      sheet.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
-      trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-
-      if (isOpen) {
-        document.body.classList.add('about-me-sheet-open');
-        sheet.removeAttribute('inert');
-      } else {
-        sheet.setAttribute('inert', '');
-
-        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (reduceMotion) {
-          removeBodyModalClass();
-        } else {
-          unlockScrollTimeout = window.setTimeout(removeBodyModalClass, SHEET_CLOSE_TRANSITION_MS);
-        }
-      }
-    }
-
-    function openSheet() {
-      if (sheet.dataset.open === 'true') {
-        return;
-      }
-
-      lastFocusedElement = document.activeElement instanceof HTMLElement
-        ? document.activeElement
-        : null;
-      setOpenState(true);
-      window.requestAnimationFrame(() => {
-        sheet.focus();
-      });
-    }
-
-    function closeSheet(restoreFocus = true) {
-      if (sheet.dataset.open !== 'true') {
-        return;
-      }
-
-      setOpenState(false);
-      if (!restoreFocus) {
-        return;
-      }
-
-      if (lastFocusedElement && document.contains(lastFocusedElement)) {
-        lastFocusedElement.focus();
-      } else {
-        trigger.focus();
-      }
-    }
-
-    const closeButton = sheet.querySelector('#about-me-close');
-    if (closeButton) {
-      closeButton.addEventListener('click', () => {
-        closeSheet();
-      });
-    }
-
-    trigger.addEventListener('click', (event) => {
-      event.preventDefault();
-      openSheet();
-    });
-
-    backdrop.addEventListener('click', () => {
-      closeSheet();
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (event.key !== 'Escape' || sheet.dataset.open !== 'true') {
-        return;
-      }
-      event.preventDefault();
-      closeSheet();
-    });
-  }
-
-  setupAboutMeSheet({
-    trigger: aboutMeTrigger,
-    sheet: aboutMeSheet,
-    backdrop: aboutMeSheetBackdrop
-  });
-
   function setupEmojiHoverParticles(options) {
     const {
       trigger,
@@ -1042,41 +975,16 @@
     });
   }
 
-  function schedulePresentDurationsRefresh() {
-    const now = new Date();
-    const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
-    const msUntilNextMonth = Math.max(nextMonth.getTime() - now.getTime(), 1000);
-
-    window.setTimeout(() => {
-      updatePresentDurations();
-      schedulePresentDurationsRefresh();
-    }, msUntilNextMonth);
-  }
-
-  if (presentDurationElements.length > 0) {
-    updatePresentDurations();
-    schedulePresentDurationsRefresh();
-  }
-
-  if (emailCopyLink && emailTooltip) {
+  document.querySelectorAll('.js-email-copy-trigger').forEach((container) => {
+    const emailCopyLink = container.querySelector('a');
+    const emailTooltip = container.querySelector('.inline-tooltip-local');
+    if (!emailCopyLink || !emailTooltip) return;
     const email = 'connect.sayful@gmail.com';
     let hideTooltipTimeout = null;
     let resetCopiedTimeout = null;
     let isCopied = false;
-
-    function isFocusVisible(element) {
-      try {
-        return element.matches(':focus-visible');
-      } catch (error) {
-        return false;
-      }
-    }
-
-    function shouldKeepTooltipOpen() {
-      return emailCopyLink.matches(':hover') || (
-        document.activeElement === emailCopyLink && isFocusVisible(emailCopyLink)
-      );
-    }
+    function isFocusVisible(element) { try { return element.matches(':focus-visible'); } catch (e) { return false; } }
+    function shouldKeepTooltipOpen() { return emailCopyLink.matches(':hover') || (document.activeElement === emailCopyLink && isFocusVisible(emailCopyLink)); }
 
     function clearEmailTimers() {
       if (hideTooltipTimeout) {
@@ -1168,15 +1076,34 @@
         resetTooltip();
       }, 1400);
     });
-  }
-
-  const revealBlocks = Array.from(document.querySelectorAll('[data-reveal]'));
-  requestAnimationFrame(() => {
-    revealBlocks.forEach((block, index) => {
-      const delay = 80 + index * 90;
-      window.setTimeout(() => {
-        block.classList.add('is-visible');
-      }, delay);
-    });
   });
+
+  document.querySelectorAll('.js-tooltip-trigger').forEach((container) => {
+    const triggerLink = container.querySelector('a');
+    const tooltipElement = container.querySelector('.inline-tooltip-local');
+
+    if (!triggerLink || !tooltipElement) {
+      return;
+    }
+
+    let hideTooltipTimeout = null;
+
+    function showTooltip() {
+      clearTimeout(hideTooltipTimeout);
+      tooltipElement.dataset.open = 'true';
+    }
+
+    function hideTooltipWithDelay() {
+      clearTimeout(hideTooltipTimeout);
+      hideTooltipTimeout = window.setTimeout(() => {
+        tooltipElement.dataset.open = 'false';
+      }, 250);
+    }
+
+    triggerLink.addEventListener('mouseenter', showTooltip);
+    triggerLink.addEventListener('mouseleave', hideTooltipWithDelay);
+    triggerLink.addEventListener('focus', showTooltip);
+    triggerLink.addEventListener('blur', hideTooltipWithDelay);
+  });
+  updatePresentDurations();
 })();

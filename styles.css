@@ -339,11 +339,6 @@
   --terminal-svelte: #946e5c;
 }
 
-:focus-visible {
-  outline: 2px solid var(--muted);
-  outline-offset: 2px;
-  border-radius: 2px;
-}
 
 html,
 body {
@@ -1315,7 +1310,7 @@ body {
 .ProjectPage-module__backMobile:focus-visible,
 .ProjectPage-module__tocItem:focus-visible,
 .ProjectPage-module__shareButton:focus-visible {
-  outline: 2px solid var(--fg-accent);
+  outline: 2px solid var(--muted);
   outline-offset: 2px;
 }
 
@@ -1811,6 +1806,17 @@ body {
 
 .Site-module__projectRowHighlight.is-active {
   opacity: 1;
+}
+
+:focus-visible {
+  outline: 2px solid var(--muted);
+  outline-offset: 2px;
+}
+
+/* Specific focus style for the theme toggle */
+.ThemeToggle-module__track:focus-visible {
+  outline: 2px solid var(--muted);
+  outline-offset: 2px;
 }
 
 .inline-tooltip-local {

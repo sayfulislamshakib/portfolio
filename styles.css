@@ -1,3 +1,9 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 .Figure-module__figure {
   margin: 0 0 var(--space-5);
   gap: var(--space-2);
@@ -1766,8 +1772,9 @@ body {
 
 @media (max-width: 640px) {
   .Site-module__container {
-    padding-top: var(--space-10);
-    padding-bottom: var(--space-8);
+    width: calc(100%);
+    padding: var(--space-10) 16px var(--space-8);
+    border-radius: 24px !important;
   }
 
   .Site-module__headerActions {
@@ -2038,13 +2045,13 @@ body {
   border-bottom-right-radius: calc(32px * var(--reveal-progress));
   will-change: transform, border-radius;
   box-shadow: 0 4px 8px rgba(0, 0, 0, calc(0.04 * var(--reveal-progress))),
-              0 10px 20px rgba(0, 0, 0, calc(0.08 * var(--reveal-progress)));
+    0 10px 20px rgba(0, 0, 0, calc(0.08 * var(--reveal-progress)));
   transition: box-shadow 0.3s var(--ease-smooth);
 }
 
 [data-theme="dark"] .Site-module__container {
   box-shadow: 0 6px 12px rgba(0, 0, 0, calc(0.12 * var(--reveal-progress))),
-              0 20px 40px rgba(0, 0, 0, calc(0.22 * var(--reveal-progress)));
+    0 20px 40px rgba(0, 0, 0, calc(0.22 * var(--reveal-progress)));
 }
 
 .SiteFooter-module__footer {

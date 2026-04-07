@@ -1105,5 +1105,29 @@
     triggerLink.addEventListener('focus', showTooltip);
     triggerLink.addEventListener('blur', hideTooltipWithDelay);
   });
+
+  /* Footer uncover effect logic */
+  const footerUncoverContainer = document.querySelector('.Site-module__container');
+  const footerUncoverFooter = document.querySelector('.SiteFooter-module__footer');
+
+  function updateFooterUncover() {
+    if (!footerUncoverContainer || !footerUncoverFooter) return;
+
+    const footerHeight = footerUncoverFooter.offsetHeight;
+    const scrollHeight = document.documentElement.scrollHeight;
+    const clientHeight = document.documentElement.clientHeight;
+    const scrollTop = window.scrollY;
+
+    // Calculate how much we've scrolled into the footer area
+    const remaining = scrollHeight - clientHeight - scrollTop;
+    const progress = Math.max(0, Math.min(1, 1 - (remaining / footerHeight)));
+
+    document.documentElement.style.setProperty('--reveal-progress', progress);
+  }
+
+  window.addEventListener('scroll', updateFooterUncover, { passive: true });
+  window.addEventListener('resize', updateFooterUncover);
+  updateFooterUncover();
+
   updatePresentDurations();
 })();

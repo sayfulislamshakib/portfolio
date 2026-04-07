@@ -98,7 +98,6 @@
 
 @media (max-width: 640px) {
   .Button-module__fullWidthOnMobile {
-    box-sizing: border-box;
     width: 100%;
     display: flex;
     min-height: 36px;
@@ -364,10 +363,6 @@ body {
 body {
   background: #000;
   margin: 0;
-}
-
-[data-vaul-drawer-wrapper][style*="scale"] {
-  border-radius: 10px !important;
 }
 
 .shadows-module__surfaceShadow {
@@ -776,14 +771,12 @@ body {
 .shared-module__verticalFade[data-side="top"] {
   background: linear-gradient(to top, transparent, var(--bg));
   -webkit-mask-image: linear-gradient(to bottom, var(--bg) 25%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, var(--bg) 25%, transparent);
   mask-image: linear-gradient(to bottom, var(--bg) 25%, transparent);
   top: 0;
 }
 
 .shared-module__verticalFade[data-side="bottom"] {
   background: linear-gradient(to bottom, transparent, var(--bg));
-  -webkit-mask-image: linear-gradient(to top, var(--bg) 25%, transparent);
   -webkit-mask-image: linear-gradient(to top, var(--bg) 25%, transparent);
   mask-image: linear-gradient(to top, var(--bg) 25%, transparent);
   bottom: 0;
@@ -831,7 +824,7 @@ body {
   padding-right: max(var(--space-4), env(safe-area-inset-right));
   padding-bottom: max(var(--space-6), env(safe-area-inset-bottom));
   max-width: var(--content-width);
-  box-sizing: border-box;
+
   width: 100%;
   height: 100%;
   margin: 0 auto;
@@ -1497,8 +1490,6 @@ body {
   padding-right: 0;
 }
 
-
-
 .Site-module__name {
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
@@ -1772,7 +1763,7 @@ body {
 
 @media (max-width: 640px) {
   .Site-module__container {
-    width: calc(100%);
+    width: 100%;
     padding: var(--space-10) 16px var(--space-8);
     border-radius: 24px !important;
   }
@@ -1903,13 +1894,11 @@ body {
 }
 
 
-
 .AboutMeSheet-module__content {
   width: 100%;
   max-width: 100%;
   margin: 0;
   overflow: auto;
-  box-sizing: border-box;
   padding: var(--space-7) var(--space-2);
 }
 
@@ -1936,7 +1925,6 @@ body {
   object-fit: cover;
   border: 1px solid var(--border);
   border-radius: 24px;
-  box-sizing: border-box;
 }
 
 .AboutMeSheet-module__title {
@@ -1947,19 +1935,11 @@ body {
   font-weight: var(--font-weight-medium);
 }
 
-[data-theme="dark"] .AboutMeSheet-module__title {
-  color: var(--fg);
-}
-
 .AboutMeSheet-module__text {
   margin: 0 0 var(--space-4);
   color: var(--fg-accent);
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
-}
-
-[data-theme="dark"] .AboutMeSheet-module__text {
-  color: var(--fg-accent);
 }
 
 .AboutMeSheet-module__text:last-child {
@@ -2001,8 +1981,6 @@ body {
   }
 }
 
-
-
 @media (prefers-reduced-motion: reduce) {
   .reveal-ready [data-reveal] {
     opacity: 1;
@@ -2039,11 +2017,9 @@ body {
   position: relative;
   z-index: 2;
   background-color: var(--bg);
-  transform-origin: top center;
-  transform: none;
   border-bottom-left-radius: calc(32px * var(--reveal-progress));
   border-bottom-right-radius: calc(32px * var(--reveal-progress));
-  will-change: transform, border-radius;
+  will-change: border-radius;
   box-shadow: 0 4px 8px rgba(0, 0, 0, calc(0.04 * var(--reveal-progress))),
     0 10px 20px rgba(0, 0, 0, calc(0.08 * var(--reveal-progress)));
   transition: box-shadow 0.3s var(--ease-smooth);
@@ -2063,7 +2039,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .Site-module__container {
-    transform: none !important;
     border-radius: 0 !important;
+    box-shadow: none !important;
   }
 }

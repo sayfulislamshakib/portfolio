@@ -154,11 +154,7 @@
     }
   }
 
-  if (typeof prefersDark.addEventListener === 'function') {
-    prefersDark.addEventListener('change', handleSystemThemeChange);
-  } else if (typeof prefersDark.addListener === 'function') {
-    prefersDark.addListener(handleSystemThemeChange);
-  }
+  prefersDark.addEventListener('change', handleSystemThemeChange);
 
   function startHeaderClock(timeZone) {
     if (!headerClock) {
@@ -569,11 +565,9 @@
 
   void hydrateVisitorStatusLine();
 
-  [twitterCard].forEach((card) => {
-    if (card && card.parentElement !== document.body) {
-      document.body.appendChild(card);
-    }
-  });
+  if (twitterCard && twitterCard.parentElement !== document.body) {
+    document.body.appendChild(twitterCard);
+  }
 
   function setupHoverCard(options) {
     const {
@@ -850,21 +844,12 @@
       }
     });
 
-    if (typeof prefersReducedMotion.addEventListener === 'function') {
-      prefersReducedMotion.addEventListener('change', (event) => {
-        if (event.matches) {
-          stop();
-          clearParticles();
-        }
-      });
-    } else if (typeof prefersReducedMotion.addListener === 'function') {
-      prefersReducedMotion.addListener((event) => {
-        if (event.matches) {
-          stop();
-          clearParticles();
-        }
-      });
-    }
+    prefersReducedMotion.addEventListener('change', (event) => {
+      if (event.matches) {
+        stop();
+        clearParticles();
+      }
+    });
   }
 
   const justgoSportsEmojis = ['\u26BD', '\u{1F3C0}', '\u{1F3C8}', '\u26BE', '\u{1F3BE}', '\u{1F3D0}', '\u{1F3C9}', '\u{1F94A}', '\u{1F3D3}', '\u{1F3F8}'];

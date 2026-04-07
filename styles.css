@@ -238,9 +238,7 @@
   --fg-button-secondary: #111;
   --button-secondary: #1111110d;
   --button-secondary-hover: #11111118;
-  --font-family:
-    "Inter var", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    sans-serif;
+  --font-family: "Inter", sans-serif;
   --font-size-display: 0.875rem;
   --font-size-heading: 0.875rem;
   --font-size-body: 0.875rem;
@@ -1486,8 +1484,8 @@ body {
 }
 
 .AboutMePage-module__header {
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: var(--space-2);
+  padding-right: var(--space-2);
 }
 
 .Site-module__name {
@@ -1790,7 +1788,7 @@ body {
 /* Local overrides used by this static clone (JS-driven interactions).        */
 /* -------------------------------------------------------------------------- */
 :root {
-  --font-mono: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  --font-mono: "Inter", sans-serif;
 }
 
 .reveal-ready [data-reveal] {
@@ -1891,6 +1889,25 @@ body {
 
 .AboutMeSheet-module__closeButton:active {
   transform: scale(0.92);
+}
+
+.AboutMeSheet-module__backButton {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-small);
+  color: var(--link-muted);
+  text-decoration: underline;
+  -webkit-text-decoration-color: var(--border);
+  text-decoration-color: var(--border);
+  text-underline-offset: 3px;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+
+.AboutMeSheet-module__backButton:hover {
+  color: var(--button-primary);
+  -webkit-text-decoration-color: var(--button-primary);
+  text-decoration-color: var(--button-primary);
 }
 
 

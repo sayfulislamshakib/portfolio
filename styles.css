@@ -59,7 +59,7 @@
 .Button-module__primary {
   color: var(--fg-button-primary);
   background: var(--button-primary);
-  text-shadow: 0 1px #0000001a;
+  text-shadow: 0 1px #00000014;
 }
 
 .Button-module__primary:active {
@@ -180,15 +180,15 @@
   left: 2px;
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow:
-    0 0.5px #11111114,
-    0 0 0 0.5px #11111114;
+    0 0.5px #e7e7e7,
+    0 0 0 0.5px #e7e7e7;
 }
 
 [data-theme="dark"] .ThemeToggle-module__indicator {
   transform: translateX(26px);
   box-shadow:
-    inset 0 0.5px #f2f2f214,
-    inset 0 0 0 0.5px #f2f2f214;
+    inset 0 0.5px #2b2b2b,
+    inset 0 0 0 0.5px #2b2b2b;
 }
 
 .ThemeToggle-module__slot {
@@ -224,20 +224,20 @@
 /* Core design tokens and theme variables (light mode defaults). */
 :root {
   --fg: #111;
-  --fg-prose: #111111b3;
-  --muted: #1116;
+  --fg-prose: #575757;
+  --muted: #9d9d9d;
   --link-muted: #575757;
   --fg-accent: #111;
-  --border: #11111114;
-  --accent: #1111110d;
+  --border: #e7e7e7;
+  --accent: #eeeeee;
   --bg: #fafafa;
   --color-success: #14a448;
   --fg-button-primary: #fff;
   --button-primary: #2563eb;
   --button-primary-hover: #1d4ed8;
   --fg-button-secondary: #111;
-  --button-secondary: #1111110d;
-  --button-secondary-hover: #11111118;
+  --button-secondary: #eeeeee;
+  --button-secondary-hover: #e5e5e5;
   --font-family: "Inter", sans-serif;
   --font-size-display: 0.875rem;
   --font-size-heading: 0.875rem;
@@ -309,9 +309,9 @@
   --z-page-fade: 10;
   --tooltip-bg: #111;
   --tooltip-fg: #fff;
-  --tooltip-border: #ffffff26;
+  --tooltip-border: #353535;
   --switch-toggle: #fff;
-  --switch-bg: #1111110d;
+  --switch-bg: #eeeeee;
   --terminal-bg: #222;
   --terminal-bright: #e8e8e8;
   --terminal-fg: #a0a0a0;
@@ -322,27 +322,27 @@
 }
 
 [data-theme="dark"] {
-  --accent: #dedede12;
+  --accent: #282828;
   --bg: #1a1a1a;
-  --border: #f2f2f214;
+  --border: #2b2b2b;
   --color-success: #4ade80;
   --button-primary: #3b82f6;
   --button-primary-hover: #60a5fa;
-  --button-secondary: #f2f2f21a;
-  --button-secondary-hover: #f2f2f229;
+  --button-secondary: #303030;
+  --button-secondary-hover: #3d3d3d;
   --fg: #f2f2f2;
-  --fg-prose: #f2f2f2b3;
-  --fg-accent: #f2f2f2e6;
+  --fg-prose: #b1b1b1;
+  --fg-accent: #dcdcdc;
   --fg-button-primary: #fff;
   --fg-button-secondary: #f2f2f2;
-  --muted: #dedede66;
+  --muted: #686868;
   --link-muted: #b1b1b1;
   --tooltip-bg: #f2f2f2;
   --tooltip-fg: #1a1a1a;
-  --tooltip-border: #00000026;
+  --tooltip-border: #cecece;
   --font-weight-regular: 400;
   --switch-toggle: #464646;
-  --switch-bg: #fafafa0d;
+  --switch-bg: #282828;
   --terminal-bg: #0e0e0e;
   --terminal-bright: #d4d4d4;
   --terminal-fg: #888;
@@ -367,8 +367,8 @@ body {
   box-shadow:
     0 0 0 1px var(--border),
     0 1px 0 0 var(--border),
-    0 4px 6px -1px #0000001a,
-    0 2px 4px -2px #0000001a;
+    0 4px 6px -1px #e6e6e6,
+    0 2px 4px -2px #eeeeee;
 }
 
 [data-theme="dark"] .shadows-module__surfaceShadow {
@@ -1620,15 +1620,7 @@ body {
   position: relative;
 }
 
-.Site-module__projectRowHighlight {
-  background: var(--accent);
-  border-radius: var(--radius-card);
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-}
+
 
 .Site-module__projectRow {
   z-index: 1;
@@ -1642,6 +1634,7 @@ body {
   display: flex;
   position: relative;
   overflow: hidden;
+  transition: color 0.15s ease-out;
 }
 
 .Site-module__projectRowHeader {
@@ -1675,6 +1668,7 @@ body {
 .Site-module__colName {
   color: var(--fg-accent);
   flex: 1 1 0;
+  transition: color 0.15s ease;
 }
 
 .Site-module__projectArrow {
@@ -1698,10 +1692,31 @@ body {
 }
 
 @media (hover: hover) and (pointer: fine) {
+  :root {
+    --dim-color: #B6B6B5;
+  }
 
-  .Site-module__projectRow:not(.Site-module__projectRowHeader):hover .Site-module__colYear,
-  .Site-module__projectRow:not(.Site-module__projectRowHeader):hover .Site-module__colType {
-    color: var(--fg-accent);
+  [data-theme="dark"] {
+    --dim-color: #4a4a4a;
+  }
+
+  /* Dim other data rows by overriding their color variables */
+  .Site-module__projectRows:has(.Site-module__projectRow:not(.Site-module__projectRowHeader):hover) .Site-module__projectRow:not(.Site-module__projectRowHeader):not(:hover) {
+    --muted: var(--dim-color) !important;
+    --fg-accent: var(--dim-color) !important;
+    color: var(--dim-color) !important;
+  }
+
+
+  /* Transition for smooth color change */
+  .Site-module__projectRow:not(.Site-module__projectRowHeader),
+  .Site-module__projectRow:not(.Site-module__projectRowHeader) * {
+    transition: color 0.14s ease, stroke 0.14s ease !important;
+  }
+
+  /* Highlight restoration */
+  .Site-module__projectRow:not(.Site-module__projectRowHeader):hover {
+    opacity: 1 !important;
   }
 }
 

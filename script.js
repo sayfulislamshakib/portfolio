@@ -41,7 +41,7 @@
   const headerClock = document.getElementById('header-clock');
   const visitorStatusLine = document.getElementById('visitor-status-line');
   const visitorStoreUrl = visitorStatusLine ? visitorStatusLine.dataset.visitorStoreUrl || '' : '';
-  const projectRowsContainers = Array.from(document.querySelectorAll('.Site-module__projectRows'));
+
   const justgoTrigger = document.getElementById('justgo-trigger-wrap');
   const justgoAnchor = document.getElementById('justgo-trigger');
   const enochTrigger = document.getElementById('enoch-trigger-wrap');
@@ -872,47 +872,7 @@
     emojis: songbadNewsVideoEmojis
   });
 
-  projectRowsContainers.forEach((projectRowsContainer) => {
-    const projectRowHighlight = projectRowsContainer.querySelector('.Site-module__projectRowHighlight');
-    const projectRows = Array.from(
-      projectRowsContainer.querySelectorAll('.Site-module__projectRow:not(.Site-module__projectRowHeader)')
-    );
 
-    if (!projectRowHighlight || projectRows.length === 0) {
-      return;
-    }
-
-    function hideProjectHighlight() {
-      projectRowHighlight.classList.remove('is-active');
-    }
-
-    function showProjectHighlight(row) {
-      projectRowHighlight.style.height = `${row.offsetHeight}px`;
-      projectRowHighlight.style.transform = `translateY(${row.offsetTop}px)`;
-      projectRowHighlight.classList.add('is-active');
-    }
-
-    projectRows.forEach((row) => {
-      row.addEventListener('pointerenter', (event) => {
-        if (event.pointerType === 'touch') {
-          return;
-        }
-        showProjectHighlight(row);
-      });
-
-      row.addEventListener('focus', () => {
-        showProjectHighlight(row);
-      });
-    });
-
-    projectRowsContainer.addEventListener('pointerleave', hideProjectHighlight);
-    projectRowsContainer.addEventListener('focusout', (event) => {
-      const nextFocused = event.relatedTarget;
-      if (!nextFocused || !projectRowsContainer.contains(nextFocused)) {
-        hideProjectHighlight();
-      }
-    });
-  });
 
   function formatExperienceDuration(totalMonths) {
     if (totalMonths <= 0) {

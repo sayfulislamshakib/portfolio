@@ -1930,7 +1930,7 @@ body {
   width: 100%;
   max-width: 100%;
   margin: 0;
-  overflow: auto;
+  overflow: visible;
   padding: var(--space-7) var(--space-2);
 }
 
@@ -1945,18 +1945,91 @@ body {
 .AboutMeSheet-module__avatarColumn {
   display: flex;
   justify-content: flex-start;
+  padding: 16px;
+  margin: -16px;
+  overflow: visible;
+}
+
+.AboutMeSheet-module__polaroidFrame {
+  position: relative;
+  width: fit-content;
+  padding: 10px 10px 48px 10px; /* Increased bottom handle area */
+  background-color: #fdfdfb; /* Slightly warmer, organic white */
+  /* Premium Handcrafted Paper Texture */
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='gamma' amplitude='1' exponent='2' offset='0'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperGrain)' opacity='0.04'/%3E%3C/svg%3E"),
+    linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.02) 100%);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.08), 
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    inset 0 0 15px rgba(255, 255, 255, 0.5); /* Inner soft glow for paper depth */
+  transform: rotate(-2deg);
+  transition: transform 0.4s var(--ease-snappy), box-shadow 0.4s var(--ease-snappy);
+  border-radius: 1px;
+}
+
+[data-theme="dark"] .AboutMeSheet-module__polaroidFrame {
+  background-color: #242424;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/feComponentTransfer%3E%3CfeFuncR type='gamma' amplitude='1' exponent='2' offset='0'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperGrain)' opacity='0.07'/%3E%3C/svg%3E"),
+    linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0) 100%);
+  border-color: #333;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .AboutMeSheet-module__polaroidFrame:hover {
+    transform: rotate(0deg) scale(1.02);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.08);
+  }
+
+  [data-theme="dark"] .AboutMeSheet-module__polaroidFrame:hover {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+  }
 }
 
 .AboutMeSheet-module__avatar {
   width: 248px;
-  height: 248px;
-  min-width: 248px;
-  max-width: 248px;
-  flex-shrink: 0;
+  height: auto;
   aspect-ratio: 1;
+  display: block;
   object-fit: cover;
-  border: 1px solid var(--border);
-  border-radius: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 1px;
+}
+
+.AboutMeSheet-module__polaroidCaption {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centered layout is best for captions */
+  font-family: 'Caveat', cursive;
+  line-height: 1;
+  pointer-events: none;
+  transform: rotate(-1.5deg);
+}
+
+.AboutMeSheet-module__polaroidName {
+  font-size: 1.3rem;
+  color: #1a1a3d;
+  opacity: 0.85;
+  white-space: nowrap;
+}
+
+.AboutMeSheet-module__polaroidDate {
+  font-size: 0.85rem;
+  color: #1a1a3d;
+  opacity: 0.6;
+  margin-top: -3px;
+}
+
+[data-theme="dark"] :is(.AboutMeSheet-module__polaroidName, .AboutMeSheet-module__polaroidDate) {
+  color: #e0e0e0; /* Silver marker effect */
+  opacity: 0.9;
 }
 
 .AboutMeSheet-module__title {

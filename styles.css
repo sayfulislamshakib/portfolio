@@ -1692,26 +1692,25 @@ body {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  :root {
-    --dim-color: #B6B6B5;
-  }
 
-  [data-theme="dark"] {
-    --dim-color: #4a4a4a;
-  }
-
-  /* Dim other data rows by overriding their color variables */
+  /* Blur other data rows when one is hovered */
   .Site-module__projectRows:has(.Site-module__projectRow:not(.Site-module__projectRowHeader):hover) .Site-module__projectRow:not(.Site-module__projectRowHeader):not(:hover) {
-    --muted: var(--dim-color) !important;
-    --fg-accent: var(--dim-color) !important;
-    color: var(--dim-color) !important;
+    filter: blur(2.5px);
+    opacity: 0.6;
   }
+
+  /* Ensure the hovered row stays sharp */
+  .Site-module__projectRow:hover {
+    filter: blur(0);
+    opacity: 1 !important;
+  }
+
 
 
   /* Transition for smooth color change */
   .Site-module__projectRow:not(.Site-module__projectRowHeader),
   .Site-module__projectRow:not(.Site-module__projectRowHeader) * {
-    transition: color 0.14s ease, stroke 0.14s ease !important;
+    transition: color 0.14s ease, stroke 0.14s ease, filter 0.2s ease !important;
   }
 
   /* Highlight restoration */
@@ -1953,17 +1952,20 @@ body {
 .AboutMeSheet-module__polaroidFrame {
   position: relative;
   width: fit-content;
-  padding: 10px 10px 48px 10px; /* Increased bottom handle area */
-  background-color: #fdfdfb; /* Slightly warmer, organic white */
+  padding: 10px 10px 48px 10px;
+  /* Increased bottom handle area */
+  background-color: #fdfdfb;
+  /* Slightly warmer, organic white */
   /* Premium Handcrafted Paper Texture */
-  background-image: 
+  background-image:
     url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='gamma' amplitude='1' exponent='2' offset='0'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperGrain)' opacity='0.04'/%3E%3C/svg%3E"),
-    linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.02) 100%);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(0, 0, 0, 0.02) 100%);
   border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 
-    0 4px 20px rgba(0, 0, 0, 0.08), 
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.08),
     0 1px 2px rgba(0, 0, 0, 0.04),
-    inset 0 0 15px rgba(255, 255, 255, 0.5); /* Inner soft glow for paper depth */
+    inset 0 0 15px rgba(255, 255, 255, 0.5);
+  /* Inner soft glow for paper depth */
   transform: rotate(-2deg);
   transition: transform 0.4s var(--ease-snappy), box-shadow 0.4s var(--ease-snappy);
   border-radius: 1px;
@@ -1971,9 +1973,9 @@ body {
 
 [data-theme="dark"] .AboutMeSheet-module__polaroidFrame {
   background-color: #242424;
-  background-image: 
+  background-image:
     url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/feComponentTransfer%3E%3CfeFuncR type='gamma' amplitude='1' exponent='2' offset='0'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperGrain)' opacity='0.07'/%3E%3C/svg%3E"),
-    linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0) 100%);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0) 100%);
   border-color: #333;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
@@ -2006,7 +2008,8 @@ body {
   right: 0;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centered layout is best for captions */
+  align-items: center;
+  /* Centered layout is best for captions */
   font-family: 'Caveat', cursive;
   line-height: 1;
   pointer-events: none;
@@ -2028,7 +2031,8 @@ body {
 }
 
 [data-theme="dark"] :is(.AboutMeSheet-module__polaroidName, .AboutMeSheet-module__polaroidDate) {
-  color: #e0e0e0; /* Silver marker effect */
+  color: #e0e0e0;
+  /* Silver marker effect */
   opacity: 0.9;
 }
 

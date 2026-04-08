@@ -1710,7 +1710,7 @@ body {
   /* Transition for smooth color change */
   .Site-module__projectRow:not(.Site-module__projectRowHeader),
   .Site-module__projectRow:not(.Site-module__projectRowHeader) * {
-    transition: color 0.14s ease, stroke 0.14s ease, filter 0.2s ease !important;
+    transition: color 0.14s ease, stroke 0.14s ease, filter 0.2s ease, opacity 0.2s ease, transform 0.25s var(--ease-smooth) !important;
   }
 
   /* Highlight restoration */

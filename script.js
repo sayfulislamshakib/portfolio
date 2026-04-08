@@ -1125,14 +1125,35 @@
       try {
         const dhakaTime = new Date().toLocaleString("en-US", { timeZone: "Asia/Dhaka", hour: 'numeric', hour12: false });
         const hour = parseInt(dhakaTime, 10);
+        // Sleep from 12 AM (0) to 7 AM
         return (hour >= 0 && hour < 7) ? sleepSet : designSet;
       } catch (e) { return designSet; }
+    }
+
+    const signContainer = document.getElementById('hanging-sign-container');
+    const signText = document.getElementById('hanging-sign-text');
+    let signTimeout = null;
+
+    function triggerSign() {
+      if (signContainer && signText) {
+        const emojis = getActiveEmojis();
+        const isSleeping = (emojis === sleepSet);
+        signText.textContent = isSleeping ? 'SLEEPING 💤' : 'AVAILABLE 😃';
+        signContainer.classList.add('is-active');
+        signContainer.classList.toggle('is-sleeping', isSleeping);
+
+        if (signTimeout) clearTimeout(signTimeout);
+        signTimeout = setTimeout(() => {
+          signContainer.classList.remove('is-active');
+        }, 5000);
+      }
     }
 
     function triggerBurst() {
       const rect = trigger.getBoundingClientRect();
       if (rect.width === 0) return;
       const emojis = getActiveEmojis();
+
       for (let i = 0; i < 8; i++) {
         setTimeout(() => {
           const spawnX = rect.left + randomBetween(0, rect.width);
@@ -1168,15 +1189,18 @@
       if (rafId) { window.cancelAnimationFrame(rafId); rafId = 0; }
     }
 
-    trigger.addEventListener('pointerenter', (e) => { if (e.pointerType !== 'touch') start(); });
-    trigger.addEventListener('pointerleave', stop);
-    trigger.addEventListener('click', () => { stop(); triggerBurst(); });
+    trigger.addEventListener('mouseenter', start);
+    trigger.addEventListener('mouseleave', stop);
+    trigger.addEventListener('click', () => {
+      stop();
+      triggerSign(); // On click, only show the sign
+    });
 
-    // Auto-trigger every 8 seconds
-    let burstInterval = setInterval(() => { if (!document.hidden && !isActive) triggerBurst(); }, 6000);
+    // Auto-trigger every 8 seconds (emoji burst only)
+    let burstInterval = setInterval(() => { if (!document.hidden && !isActive) triggerBurst(); }, 8000);
     document.addEventListener('visibilitychange', () => {
       clearInterval(burstInterval);
-      if (!document.hidden) burstInterval = setInterval(() => { if (!document.hidden && !isActive) triggerBurst(); }, 6000);
+      if (!document.hidden) burstInterval = setInterval(() => { if (!document.hidden && !isActive) triggerBurst(); }, 8000);
     });
   }
 

@@ -2152,3 +2152,8 @@ body {
     box-shadow: none !important;
   }
 }
+
+#header-clock {
+  -webkit-user-select: none;
+  user-select: none;
+}

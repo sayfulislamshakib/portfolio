@@ -1074,5 +1074,115 @@
   window.addEventListener('resize', updateFooterUncover);
   updateFooterUncover();
 
+  const sleepEmojis = ['💤', '✨', '🌙', '⭐'];
+  const designEmojis = ['🎨', '🖌️', '📐', '📏', '🖼️', '💻', '🖥️', '📱', '⌨️', '🖱️', '💡', '🧠', '💭', '🤝', '🛠️', '🌐', '🔍', '🚀', '⚡', '🎯', '🏢', '🚃', '🚗', '🚕', '🏎️', '🤹‍♂️', '🤸', '🍖', '🍗', '🍕', '🍚', '🍜'];
+
+  function setupClockParticles(trigger, sleepSet, designSet) {
+    if (!trigger) return;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const activeParticles = new Set();
+    let isActive = false;
+    let rafId = 0;
+    let lastSpawnAt = 0;
+    const spawnIntervalMs = 180;
+
+    function randomBetween(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    function createParticle(x, y, emojis) {
+      if (prefersReducedMotion.matches) return;
+
+      const particle = document.createElement('span');
+      particle.className = 'JustGoSportsLink-module__emoji';
+      particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+      const driftX = randomBetween(-35, 35);
+      const driftY = randomBetween(-65, -35);
+      const rotate = randomBetween(-25, 25);
+      const duration = randomBetween(2200, 2800);
+      const fontSize = randomBetween(14, 20);
+
+      particle.style.fontSize = `${fontSize}px`;
+      particle.style.transform = `translate3d(${x}px, ${y}px, 0) scale(0.72)`;
+      document.body.appendChild(particle);
+      activeParticles.add(particle);
+
+      const animation = particle.animate([
+        { transform: `translate3d(${x}px, ${y}px, 0) scale(0.72) rotate(${rotate * -0.2}deg)`, opacity: 0 },
+        { transform: `translate3d(${x + driftX * 0.25}px, ${y + driftY * 0.25}px, 0) scale(1) rotate(${rotate * 0.5}deg)`, opacity: 0.95, offset: 0.25 },
+        { transform: `translate3d(${x + driftX}px, ${y + driftY}px, 0) scale(0.9) rotate(${rotate}deg)`, opacity: 0 }
+      ], { duration, easing: 'cubic-bezier(0.18, 0.9, 0.3, 1)', fill: 'forwards' });
+
+      animation.addEventListener('finish', () => {
+        activeParticles.delete(particle);
+        particle.remove();
+      }, { once: true });
+    }
+
+    function getActiveEmojis() {
+      try {
+        const dhakaTime = new Date().toLocaleString("en-US", { timeZone: "Asia/Dhaka", hour: 'numeric', hour12: false });
+        const hour = parseInt(dhakaTime, 10);
+        return (hour >= 0 && hour < 7) ? sleepSet : designSet;
+      } catch (e) { return designSet; }
+    }
+
+    function triggerBurst() {
+      const rect = trigger.getBoundingClientRect();
+      if (rect.width === 0) return;
+      const emojis = getActiveEmojis();
+      for (let i = 0; i < 8; i++) {
+        setTimeout(() => {
+          const spawnX = rect.left + randomBetween(0, rect.width);
+          const spawnY = rect.top + randomBetween(0, rect.height);
+          createParticle(spawnX, spawnY, emojis);
+        }, i * 80);
+      }
+    }
+
+    function tick(timestamp) {
+      if (!isActive) return;
+      if (timestamp - lastSpawnAt >= spawnIntervalMs) {
+        const rect = trigger.getBoundingClientRect();
+        if (rect.width > 0) {
+          const spawnX = rect.left + randomBetween(0, rect.width);
+          const spawnY = rect.top + randomBetween(0, rect.height);
+          createParticle(spawnX, spawnY, getActiveEmojis());
+        }
+        lastSpawnAt = timestamp;
+      }
+      rafId = window.requestAnimationFrame(tick);
+    }
+
+    function start() {
+      if (isActive || prefersReducedMotion.matches) return;
+      isActive = true;
+      lastSpawnAt = 0;
+      rafId = window.requestAnimationFrame(tick);
+    }
+
+    function stop() {
+      isActive = false;
+      if (rafId) { window.cancelAnimationFrame(rafId); rafId = 0; }
+    }
+
+    trigger.addEventListener('pointerenter', (e) => { if (e.pointerType !== 'touch') start(); });
+    trigger.addEventListener('pointerleave', stop);
+    trigger.addEventListener('click', () => { stop(); triggerBurst(); });
+
+    // Auto-trigger every 8 seconds
+    let burstInterval = setInterval(() => { if (!document.hidden && !isActive) triggerBurst(); }, 6000);
+    document.addEventListener('visibilitychange', () => {
+      clearInterval(burstInterval);
+      if (!document.hidden) burstInterval = setInterval(() => { if (!document.hidden && !isActive) triggerBurst(); }, 6000);
+    });
+  }
+
+  if (headerClock) {
+    setupClockParticles(headerClock, sleepEmojis, designEmojis);
+  }
+
   updatePresentDurations();
 })();

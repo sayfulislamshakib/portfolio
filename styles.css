@@ -1544,7 +1544,7 @@ body {
   justify-content: center;
   line-height: 1;
   text-align: center;
-  transition: 
+  transition:
     transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
     filter 0.5s ease-out,
     opacity 0.5s ease-out;
@@ -2201,7 +2201,8 @@ body {
   position: relative;
   width: max-content;
   min-width: 100px;
-  background: #14a448; /* Green for WORKING */
+  background: #14a448;
+  /* Green for WORKING */
   border: 2px solid #ffffff;
   padding: 4px 6px;
   /* Increased left/right padding to give some breathing room with auto-width */
@@ -2216,11 +2217,13 @@ body {
 }
 
 .HangingSign-module__container.is-sleeping .HangingSign-module__sign {
-  background: #d10000; /* Red for SLEEPING */
+  background: #d10000;
+  /* Red for SLEEPING */
 }
 
 [data-theme="dark"] .HangingSign-module__sign {
-  background: #148b3b; /* Deeper green for dark mode Working */
+  background: #148b3b;
+  /* Deeper green for dark mode Working */
   border-color: #e0e0e0;
   box-shadow:
     inset 0 1px 1px rgba(255, 255, 255, 0.1),
@@ -2228,11 +2231,13 @@ body {
 }
 
 [data-theme="dark"] .HangingSign-module__container.is-sleeping .HangingSign-module__sign {
-  background: #9b0000; /* Deeper red for dark mode Sleeping */
+  background: #9b0000;
+  /* Deeper red for dark mode Sleeping */
 }
 
 [data-theme="dark"] .HangingSign-module__sign::before {
-  border-color: rgba(255, 255, 255, 0.15); /* More subtle dots in dark mode */
+  border-color: rgba(255, 255, 255, 0.15);
+  /* More subtle dots in dark mode */
 }
 
 /* The cord/string (Dotted style from CodePen) */
@@ -2244,7 +2249,8 @@ body {
   left: 50%;
   width: 46px;
   height: 46px;
-  border-left: 2px dotted rgba(0, 0, 0, 0.15); /* More subtle dots */
+  border-left: 2px dotted rgba(0, 0, 0, 0.15);
+  /* More subtle dots */
   border-top: 2px dotted rgba(0, 0, 0, 0.15);
   transform: translateX(-50%) rotate(45deg) translateZ(-1px);
   /* Use Z-axis to stay behind */
@@ -2260,7 +2266,8 @@ body {
   left: 50%;
   width: 10px;
   height: 10px;
-  background: linear-gradient(#999, #444); /* More subtle metallic look */
+  background: linear-gradient(#999, #444);
+  /* More subtle metallic look */
   border-radius: 50%;
   transform: translateX(-50%);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);

@@ -115,7 +115,15 @@
   const transitionOverlay = document.getElementById('theme-transition-overlay');
 
   themeToggles.forEach((btn) => {
-    btn.addEventListener('click', async () => {
+    btn.addEventListener('click', function () {
+      // Add haptic feedback for mobile (including legacy prefixed versions)
+      try {
+        var v = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
+        if (v) {
+          v.call(navigator, 40);
+        }
+      } catch (err) { }
+
       const currentTheme = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
       const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
       themePreference = nextTheme;
@@ -125,26 +133,30 @@
         setTheme(nextTheme);
       };
 
-      if (document.startViewTransition) {
-        document.documentElement.dataset.themeTransitioning = 'true';
-        const transition = document.startViewTransition(updateTheme);
-        try {
-          await transition.finished;
-        } finally {
-          delete document.documentElement.dataset.themeTransitioning;
+      const handleTransition = async () => {
+        if (document.startViewTransition) {
+          document.documentElement.dataset.themeTransitioning = 'true';
+          const transition = document.startViewTransition(updateTheme);
+          try {
+            await transition.finished;
+          } finally {
+            delete document.documentElement.dataset.themeTransitioning;
+          }
+        } else if (transitionOverlay) {
+          transitionOverlay.style.setProperty('--overlay-bg', getComputedStyle(root).getPropertyValue('--bg'));
+          transitionOverlay.dataset.visible = 'true';
+
+          await new Promise(r => setTimeout(r, 40));
+          updateTheme();
+
+          await new Promise(r => setTimeout(r, 160));
+          transitionOverlay.dataset.visible = 'false';
+        } else {
+          updateTheme();
         }
-      } else if (transitionOverlay) {
-        transitionOverlay.style.setProperty('--overlay-bg', getComputedStyle(root).getPropertyValue('--bg'));
-        transitionOverlay.dataset.visible = 'true';
+      };
 
-        await new Promise(r => setTimeout(r, 40));
-        updateTheme();
-
-        await new Promise(r => setTimeout(r, 160));
-        transitionOverlay.dataset.visible = 'false';
-      } else {
-        updateTheme();
-      }
+      handleTransition();
     });
   });
 

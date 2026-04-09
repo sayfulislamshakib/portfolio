@@ -181,7 +181,7 @@
     colonElement.textContent = ':';
     minuteElement.className = 'HeaderClock-module__digits';
     cityElement.className = 'HeaderClock-module__city';
-    cityElement.textContent = '\u00A0in Dhaka';
+    cityElement.textContent = 'in Dhaka';
     hourElement.append(hourTensElement.element, hourOnesElement.element);
     minuteElement.append(minuteTensElement.element, minuteOnesElement.element);
     timeElement.append(hourElement, colonElement, minuteElement);
@@ -219,95 +219,68 @@
 
     function createDigitReel() {
       const element = document.createElement('span');
-      const track = document.createElement('span');
       element.className = 'HeaderClock-module__digitChar';
-      track.className = 'HeaderClock-module__digitTrack';
 
-      for (let index = 0; index < 20; index += 1) {
-        const glyph = document.createElement('span');
-        glyph.className = 'HeaderClock-module__digitGlyph';
-        glyph.textContent = String(index % 10);
-        track.appendChild(glyph);
-      }
+      const activeDigit = document.createElement('span');
+      activeDigit.className = 'HeaderClock-module__digit';
+      element.appendChild(activeDigit);
 
-      element.appendChild(track);
       return {
         element,
-        track,
-        value: null,
-        resetHandler: null,
-        stepPx: 0
+        activeDigit,
+        value: null
       };
     }
 
-    function measureReelStep(reel) {
-      const firstGlyph = reel.track.firstElementChild;
-      const measuredStep = firstGlyph instanceof HTMLElement
-        ? firstGlyph.getBoundingClientRect().height
-        : reel.element.getBoundingClientRect().height;
-
-      if (Number.isFinite(measuredStep) && measuredStep > 0) {
-        reel.stepPx = measuredStep;
-      }
-
-      return reel.stepPx;
-    }
-
-    function setReelPosition(reel, position, animate) {
-      const stepPx = measureReelStep(reel);
-      if (!(stepPx > 0)) {
-        return;
-      }
-
-      const offsetPx = position * stepPx;
-      if (!animate) {
-        reel.track.style.transition = 'none';
-        reel.track.style.transform = `translateY(${-offsetPx}px)`;
-        void reel.track.offsetWidth;
-        reel.track.style.transition = '';
-        return;
-      }
-
-      reel.track.style.transform = `translateY(${-offsetPx}px)`;
-    }
-
     function updateDigitReel(reel, nextValue) {
-      const parsed = Number.parseInt(nextValue, 10);
-      if (!Number.isFinite(parsed)) {
+      if (reel.value === nextValue) {
         return;
       }
 
-      if (typeof reel.resetHandler === 'function') {
-        reel.track.removeEventListener('transitionend', reel.resetHandler);
-        reel.resetHandler = null;
-      }
+      const prevValue = reel.value;
+      reel.value = nextValue;
 
-      if (!Number.isInteger(reel.value)) {
-        reel.value = parsed;
-        setReelPosition(reel, parsed, false);
+      if (prevValue === null) {
+        reel.activeDigit.textContent = nextValue;
         return;
       }
 
-      if (reel.value === parsed) {
-        return;
-      }
+      // Create next digit for the swap
+      const nextDigit = document.createElement('span');
+      nextDigit.className = 'HeaderClock-module__digit';
+      nextDigit.textContent = nextValue;
 
-      const targetPosition = parsed < reel.value ? parsed + 10 : parsed;
-      reel.value = parsed;
-      setReelPosition(reel, targetPosition, true);
+      // Position next digit below for entrance
+      nextDigit.style.transform = 'translateY(100%)';
+      nextDigit.style.filter = 'blur(2px)';
+      nextDigit.style.opacity = '0';
 
-      if (targetPosition >= 10) {
-        reel.resetHandler = (event) => {
-          if (event.propertyName !== 'transform') {
-            return;
-          }
-          reel.track.removeEventListener('transitionend', reel.resetHandler);
-          reel.resetHandler = null;
-          setReelPosition(reel, parsed, false);
-        };
+      reel.element.appendChild(nextDigit);
 
-        reel.track.addEventListener('transitionend', reel.resetHandler);
-      }
+      // Force reflow
+      void nextDigit.offsetWidth;
+
+      // Animate active digit out (up)
+      reel.activeDigit.style.transform = 'translateY(-100%)';
+      reel.activeDigit.style.filter = 'blur(2px)';
+      reel.activeDigit.style.opacity = '0';
+
+      // Animate next digit in (to center)
+      nextDigit.style.transform = 'translateY(0)';
+      nextDigit.style.filter = 'blur(0px)';
+      nextDigit.style.opacity = '1';
+
+      const oldDigit = reel.activeDigit;
+      reel.activeDigit = nextDigit;
+
+      // Cleanup old digit after animation
+      const onEnd = (event) => {
+        if (event.target === oldDigit && event.propertyName === 'transform') {
+          oldDigit.removeEventListener('transitionend', onEnd);
+          oldDigit.remove();
+        }
+      };
+      oldDigit.addEventListener('transitionend', onEnd);
     }
 
     function setTwoDigitValue(tensReel, onesReel, value) {
@@ -316,14 +289,6 @@
       updateDigitReel(onesReel, normalizedValue[1]);
     }
 
-    function syncReelMetricsAndPositions() {
-      allDigitReels.forEach((reel) => {
-        measureReelStep(reel);
-        if (Number.isInteger(reel.value)) {
-          setReelPosition(reel, reel.value, false);
-        }
-      });
-    }
 
     function cleanupTimers() {
       if (intervalId) {
@@ -341,12 +306,11 @@
       const timeLabel = formatter.format(now);
       const timeParts = parseTimeParts(timeLabel);
       if (!timeParts) {
-        headerClock.textContent = `${timeLabel}\u00A0in Dhaka`;
+        headerClock.textContent = `${timeLabel}in Dhaka`;
         return;
       }
 
       ensureClockMarkup();
-      syncReelMetricsAndPositions();
       setTwoDigitValue(hourTensElement, hourOnesElement, timeParts.hours);
       setTwoDigitValue(minuteTensElement, minuteOnesElement, timeParts.minutes);
 
@@ -376,11 +340,6 @@
     renderClock();
     syncToMinuteBoundary();
     document.addEventListener('visibilitychange', handleVisibilityChange);
-    window.addEventListener('resize', syncReelMetricsAndPositions);
-
-    if (window.visualViewport && typeof window.visualViewport.addEventListener === 'function') {
-      window.visualViewport.addEventListener('resize', syncReelMetricsAndPositions);
-    }
   }
 
   startHeaderClock('Asia/Dhaka');

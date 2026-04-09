@@ -1507,6 +1507,10 @@ body {
 .Site-module__tagline {
   color: var(--muted);
   font-variant-numeric: oldstyle-nums tabular-nums;
+  display: flex;
+  align-items: center;
+  gap: 0.25ch;
+  line-height: 1;
 }
 
 .HeaderClock-module__time {
@@ -1514,12 +1518,13 @@ body {
   display: inline-flex;
   line-height: 1;
   font-variant-numeric: lining-nums tabular-nums;
+  position: relative;
+  overflow: hidden;
 }
 
 .HeaderClock-module__digits {
   display: inline-flex;
-  min-width: 2ch;
-  justify-content: flex-end;
+  align-items: center;
 }
 
 .HeaderClock-module__digitChar {
@@ -1531,38 +1536,33 @@ body {
   display: inline-flex;
 }
 
-.HeaderClock-module__digitTrack {
-  line-height: 1;
-  flex-direction: column;
+.HeaderClock-module__digit {
+  position: absolute;
+  inset: 0;
   display: flex;
-  transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform;
-}
-
-.HeaderClock-module__digitGlyph {
-  width: 1ch;
-  height: 1em;
-  text-align: right;
+  align-items: center;
+  justify-content: center;
   line-height: 1;
-  display: block;
+  text-align: center;
+  transition: 
+    transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 0.5s ease-out,
+    opacity 0.5s ease-out;
+  will-change: transform, filter, opacity;
 }
 
 .HeaderClock-module__colon {
   width: 0.6ch;
   height: 1em;
-  overflow: hidden;
-  text-align: center;
-  font-family: inherit;
-  font-size: 1em;
-  font-weight: inherit;
-  font-variant-numeric: lining-nums tabular-nums;
-  font-feature-settings: "lnum" 1, "tnum" 1;
-  color: inherit;
-  line-height: 1;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
+  line-height: 1;
   transform: translateY(-0.05em);
-  display: inline-flex;
+}
+
+.HeaderClock-module__city {
+  display: inline;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1837,23 +1837,23 @@ body {
 
 .theme-toggle-indicator {
   width: 24px;
-  transform: translateX(0);
-  transition:
-    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-    width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(0) scaleX(1);
+  transform-origin: left center;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 [data-theme="dark"] .theme-toggle-indicator {
-  transform: translateX(26px);
+  transform: translateX(26px) scaleX(1);
+  transform-origin: right center;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .ThemeToggle-module__track:hover .theme-toggle-indicator {
-    width: 27px;
+    transform: translateX(0) scaleX(1.125);
   }
 
   [data-theme="dark"] .ThemeToggle-module__track:hover .theme-toggle-indicator {
-    transform: translateX(23px);
+    transform: translateX(26px) scaleX(1.125);
   }
 }
 

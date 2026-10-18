@@ -895,7 +895,7 @@
     const emailCopyLink = container.querySelector('a');
     const emailTooltip = container.querySelector('.inline-tooltip-local');
     if (!emailCopyLink || !emailTooltip) return;
-    const email = 'connect.sayful@gmail.com';
+    const email = 'sayfuluxui@gmail.com';
     let hideTooltipTimeout = null;
     let resetCopiedTimeout = null;
     let isCopied = false;
